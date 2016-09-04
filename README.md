@@ -93,10 +93,10 @@ In SKON all simple data is represented in plain text with no additional syntax (
 
 Here is a few examples:
 
-`0` is a Integer.
-`"example"` is a String.
-`0.2` is a Float.
-`true` is a Boolean.
+* `0` is a Integer.
+* `"example"` is a String.
+* `0.2` is a Float.
+* `true` is a Boolean.
 
 There are two data types that are considered complex:
 
