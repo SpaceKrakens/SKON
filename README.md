@@ -1,15 +1,15 @@
 # SKON
 Space Kraken Object Notation
 
-Is a language originally created to accomidate the data format language need for [Project Porcupine](https://github.com/TeamPorcupine/ProjectPorcupine).
+Is a language originally created to accommodate the data format language need for [Project Porcupine](https://github.com/TeamPorcupine/ProjectPorcupine).
 
-It's main focus is besting all other object notation languages. No more need for 90% filler in xml or the unreadable `"`s in Json.
+Its main focus is besting all other object notation languages. No more need for 90% filler in xml or the unreadable `"`s in Json.
 
 It's also notable that it has a schema. So you don't have to just blindly trust the user. :smile:
 
 #Example
 
-The following is an example showing the syntax of the language
+The following is an example showing the syntax of the language:
 
 ```
 // This is a map, it can contain every type of data type.
@@ -20,8 +20,8 @@ Map: {
 
     DifferentTypes: 1.1 // Comment example
 
-    // This is a nestled map.
-    NestledMap: {
+    // This is a nested map.
+    NestedMap: {
         WhateverValue: 0.0,
         AnotherValue: "This is a value"
     }
@@ -77,7 +77,7 @@ optional OtherMap: { }
 
 The language has a few built in types data types that allows for complex data to be represented.
 
-The build in types are: 
+The built in types are: 
 
 * String
 * Integer
@@ -105,9 +105,9 @@ There are two data types that are considered complex:
 
 ###Arrays
 
-Arrays are written as data surrounded by square parenthesies with every entry spearated by a comma.
+Arrays are written as data surrounded by square parenthesies with every entry separated by a comma.
 
-The data type of an array in inferred by the first entrys type.
+The data type of an array in inferred by the first entrys type. Even arrays of arrays or maps are possible, should the need for complex arrays arise.
 
 ```
 [
