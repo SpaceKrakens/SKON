@@ -100,6 +100,9 @@ Here is a few examples:
 
 There are two data types that are considered complex:
 
+* Arrays
+* Maps
+
 ###Arrays
 
 Arrays are written as data surrounded by square parenthesies with every entry spearated by a comma.
