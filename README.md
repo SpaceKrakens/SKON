@@ -5,7 +5,7 @@ Is a language originally created to accomidate the data format language need for
 
 It's main focus is besting all other object notation languages. No more need for 90% filler in xml or the unreadable `"`s in Json.
 
-It's also notable that it has a schema. So you don't have to just blindly trust the user. :smile:
+It's also notable that it has a schema. So you don't have to just blindly trust the user. :octopus:
 
 #Example
 
