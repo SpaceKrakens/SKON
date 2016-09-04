@@ -100,9 +100,7 @@ Here is a few examples:
 
 There are two data types that are considered complex:
 
-Arrays and Maps.
-
-####Arrays
+###Arrays
 
 Arrays are written as data surrounded by square parenthesies with every entry spearated by a comma.
 
@@ -119,7 +117,7 @@ The data type of an array in inferred by the first entrys type.
 ]
 ```
 
-####Maps
+###Maps
 
 A map is written as any number of key value pairs surrounded in curly braces.
 
