@@ -13,7 +13,7 @@ The following is an example showing the syntax of the language
 
 ```
 // This is a map, it can contain every type of data type.
-RootMap: {
+Map: {
 
     // This is a key value pair. The type is inferred from the syntax of the value (This is a string)
     KeyValuePair: "Value" 
