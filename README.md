@@ -49,6 +49,7 @@ OtherMap: {
 The language also supports schemas. Here is an example of a schema for the above SKON:
 
 ```
+//Schemas supports comments!
 required RootMap: {
     
     required KeyValuePair: string
