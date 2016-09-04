@@ -79,13 +79,13 @@ The language has a few built in types data types that allows for complex data to
 
 The build in types are: 
 
-*String
-*Integer
-*Float
-*Boolean
-*Datetime
-*Array
-*Map
+* String
+* Integer
+* Float
+* Boolean
+* Datetime
+* Array
+* Map
 
 ##Syntax
 
