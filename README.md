@@ -12,26 +12,28 @@ It's also notable that it has a schema. So you don't have to just blindly trust 
 The following is an example showing the syntax of the language:
 
 ```
+//SKON supports comments!
+
 // This is a map, it can contain every type of data type.
 Map: {
 
     // This is a key value pair. The type is inferred from the syntax of the value (This is a string)
-    KeyValuePair: "Value" 
+    KeyValuePair: "Value",
 
-    DifferentTypes: 1.1 // Comment example
+    DifferentTypes: 1.1,
 
     // This is a nested map.
     NestedMap: {
         WhateverValue: 0.0,
         AnotherValue: "This is a value"
-    }
+    },
 
     // This is an array, type is inferred from the first element
     TestArray: [
         "Test",
         "asdf"
     ]
-}
+},
 
 // This is an empty map
 OtherMap: {
