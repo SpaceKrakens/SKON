@@ -50,18 +50,24 @@ The language also supports schemas. Here is an example of a schema for the above
 
 ```
 //Schemas supports comments!
+
+//This specifies that a map called "RootMap" needs to exist in the file
 required RootMap: {
     
+    //This specifies that a KeyValue pair called "KeyValuePair" needs to exist and be of type string
     required KeyValuePair: string
 
+    //This specifies that a KeyValue pair called "DifferentTypes" of type float could be defined.
     optional DifferentTypes: float
 
     //An empty schema map means that anything is allowed
     required NestledMap: { }
 
+    //This means that an array of strings called "TestArray" needs to be defined
     required TestArray: [string]
 
 }
 
+//A optional map of anything
 optional OtherMap: { }
 ```
