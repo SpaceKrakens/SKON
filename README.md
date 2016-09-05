@@ -7,7 +7,7 @@ Its main focus is besting all other object notation languages. No more need for 
 
 It's also notable that it has a schema. So you don't have to just blindly trust the user. :octopus:
 
-#Example
+## Example
 
 The following is an example showing the syntax of the language:
 
@@ -46,7 +46,7 @@ OtherMap: {
 }
 ```
 
-##Schema
+## Schema
 
 The language also supports schemas. Here is an example of a schema for the above SKON:
 
@@ -73,9 +73,9 @@ required RootMap: {
 // A optional map of anything
 optional OtherMap: { }
 ```
-#Language specifications
+## Language specifications
 
-##Types
+### Types
 
 The language has a few built in types data types that allows for complex data to be represented.
 
@@ -89,7 +89,7 @@ The built in types are:
 * Array
 * Map
 
-##Syntax
+### Syntax
 
 In SKON all simple data is represented in plain text with no additional syntax (except for strings which are surrounded with double quotes).
 
@@ -105,7 +105,7 @@ There are two data types that are considered complex:
 * Arrays
 * Maps
 
-###Arrays
+#### Arrays
 
 Arrays are written as data surrounded by square parenthesises with every entry separated by a comma.
 
@@ -122,7 +122,7 @@ The data type of an array in inferred by the first entry's type. Even arrays of 
 ]
 ```
 
-###Maps
+#### Maps
 
 A map is written as any number of key value pairs separated by a comma surrounded in curly braces.
 
@@ -153,4 +153,36 @@ Map: {
     SomeKey: "SomeValue"
 
 }
+```
+
+#### Datetime
+
+There are numerous ways to write date and time in SKON, most of which are based upon [RFC 3339/ISO 8601](https://tools.ietf.org/html/rfc3339#section-5.6). Additionally to this standard, SKON supports UNIX Timestamps.
+
+```
+DateTimes: 
+[
+    @1,                                 // These two values are valid UNIX Timestamps.
+    @1473113744,
+    
+    2310-12-01,                         // Just the date in the YYYY-MM-DD format.
+    
+    2310-12-01T13:37:01Z,               // Date and additionally time in the HH:MM:SSZ format.
+                                        // Z stands for Zulu and means no difference from UTC.
+                                        // Date and time are always separated by a T (for time).
+    
+    2310-12-01T13:37:01.02Z,            // Date and additionally time in the HH:MM:SS.SECFRACZ format.
+                                        // SECFRAC is a fraction of a second. Technically SKON gives
+                                        // you no limit but we advise to stay reasonable.
+    
+    2310-12-01T13:37:01+09:00,          // To specify a different offset than UTC+0, substitute Z with
+                                        // either +HH:MM or -HH:MM.
+    
+    2310-12-01T13:37:01.002+09:00,      // This obviously also works with fractions of seconds.
+    
+    13:37:01Z,                          // You can also write times alone by obmitting the date
+    13:37:01.02Z,                       // part and the date/time separator T.
+    13:37:01+09:00,                     // All four different formats for times are supported.
+    13:37:01.002+09:00,
+],
 ```
