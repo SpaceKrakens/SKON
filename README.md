@@ -63,7 +63,7 @@ required RootMap: {
     optional DifferentTypes: float
 
     // An empty schema map means that anything is allowed
-    required NestledMap: { }
+    required NestedMap: { }
 
     // This means that an array of strings called "TestArray" needs to be defined
     required TestArray: [string]
