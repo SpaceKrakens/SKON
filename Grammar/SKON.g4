@@ -7,7 +7,7 @@ skon
 
 // A map without the surrounding '{' '}'
 open_map
-    : pair (SEPARATOR pair)*
+    : pair (SEPARATOR pair)* (SEPARATOR)*
     ;
 
 // A map that expects any number of key-value pairs separated by commas
