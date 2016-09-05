@@ -57,18 +57,18 @@ The language also supports schemas. Here is an example of a schema for the above
 required RootMap: {
     
     // This specifies that a KeyValue pair called "KeyValuePair" needs to exist and be of type string
-    required KeyValuePair: string
+    required KeyValuePair: string,
 
     // This specifies that a KeyValue pair called "DifferentTypes" of type float could be defined.
-    optional DifferentTypes: float
+    optional DifferentTypes: float,
 
     // An empty schema map means that anything is allowed
-    required NestedMap: { }
+    required NestedMap: { },
 
     // This means that an array of strings called "TestArray" needs to be defined
     required TestArray: [string]
 
-}
+},
 
 // A optional map of anything
 optional OtherMap: { }
@@ -91,9 +91,9 @@ The built in types are:
 
 ##Syntax
 
-In SKON all simple data is represented in plain text with no additional syntax (exept for strings which are surrounded with quotes).
+In SKON all simple data is represented in plain text with no additional syntax (except for strings which are surrounded with double quotes).
 
-Here is a few examples:
+Here are a few examples:
 
 * `0` is a Integer.
 * `"example"` is a String.
@@ -107,9 +107,9 @@ There are two data types that are considered complex:
 
 ###Arrays
 
-Arrays are written as data surrounded by square parenthesies with every entry separated by a comma.
+Arrays are written as data surrounded by square parenthesises with every entry separated by a comma.
 
-The data type of an array in inferred by the first entrys type. Even arrays of arrays or maps are possible, should the need for complex arrays arise.
+The data type of an array in inferred by the first entry's type. Even arrays of arrays or maps are possible, should the need for complex arrays arise.
 
 ```
 [
@@ -124,7 +124,7 @@ The data type of an array in inferred by the first entrys type. Even arrays of a
 
 ###Maps
 
-A map is written as any number of key value pairs surrounded in curly braces.
+A map is written as any number of key value pairs separated by a comma surrounded in curly braces.
 
 A key value pair is written as such:
 
@@ -136,7 +136,7 @@ So a map would then look like this:
 
 ```
 {
-    key1: value1
+    key1: value1,
     key2: value2
 }
 ```
@@ -146,7 +146,7 @@ Every file In SKON is a map, so all elements in root has to be a key value pair.
 This is what a file containing a string and map would look like:
 
 ```
-Name: "SomeName"
+Name: "SomeName",
 
 Map: {
 
