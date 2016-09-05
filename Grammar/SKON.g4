@@ -48,7 +48,16 @@ value
 
 // A '@' followed by a unix timestamp
 DATETIME
-    : '@' [1-9] [0-9]*
+    : '@' INTNOZERO 
+    | YEAR '-' MONTH '-' DAY 
+    | HOUR ':' MINUTE ':' SECOND ZULU 
+    | HOUR ':' MINUTE ':' SECOND '.' DIGIT* ZULU
+    | HOUR ':' MINUTE ':' SECOND ('+'|'-') HOUR ':' MINUTE
+    | HOUR ':' MINUTE ':' SECOND '.' DIGIT* ('+'|'-') HOUR ':' MINUTE
+    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND ZULU 
+    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND '.' DIGIT* ZULU
+    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND ('+'|'-') HOUR ':' MINUTE
+    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND '.' DIGIT* ('+'|'-') HOUR ':' MINUTE
     ;
 
 // True and false is before to get mached before KEY
@@ -56,6 +65,7 @@ TRUE: 'true';
 FALSE: 'false';
 
 // Any number of characters
+
 KEY
     : [a-zA-Z]CHAR+
     ;
@@ -111,12 +121,50 @@ INTEGER
 
 // A non negative Integer with no leading zeros
 fragment INT
-   : '0' | [1-9] [0-9]*
+   : '0' | INTNOZERO
+   ;
+
+// A non negative Integer (excluding zero) with no leading zeros
+fragment INTNOZERO
+   : [1-9] [0-9]*
+   ;
+
+// A single Integer digit
+fragment DIGIT
+   : [0-9]
    ;
 
 // Float exponent part
 fragment EXP
    : [Ee] [+\-]? INT
+   ;
+
+fragment YEAR
+    : DIGIT DIGIT DIGIT DIGIT
+    ;
+
+fragment MONTH
+    : DIGIT DIGIT
+    ;
+
+fragment DAY
+    : DIGIT DIGIT
+    ;
+
+fragment HOUR
+    : DIGIT DIGIT
+    ;
+
+fragment MINUTE
+    : DIGIT DIGIT
+    ;
+
+fragment SECOND
+    : DIGIT DIGIT
+    ;
+
+fragment ZULU
+   : [Zz]
    ;
 
 // Single line comments
