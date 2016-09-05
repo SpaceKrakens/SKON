@@ -1,0 +1,59 @@
+Tiles:
+[
+    { 
+        tileType: "Empty",
+        name: "Empty",
+        description: "This is a empty tile.",
+        baseMovementCost: 1,
+        linksToNeighbours: false,
+        
+        buildingJob:
+        {
+            jobTime: 0,
+        },
+
+        localizationCode: "tile_Empty",
+        unlocalizedDescription: "tile_Empty_desc",
+    },
+
+    { 
+        tileType: "Floor",
+        name: "Floor",
+        description: "This is a Floor tile.",
+        baseMovementCost: 1,
+        linksToNeighbours: false,
+        
+        buildingJob:
+        {
+            jobTime: 0.1,
+        },
+
+        localizationCode: "tile_Floor",
+        unlocalizedDescription: "tile_Floor_desc",
+    },
+
+    { 
+        tileType: "Ladder",
+        name: "Ladder",
+        description: "This is a Ladder tile.",
+        baseMovementCost: 1.5,
+        linksToNeighbours: false,
+        
+        CanPlaceHere:
+        [
+            "CanBuildHere_Ladder",
+        ],
+
+        buildingJob:
+        {
+            jobTime: 0.5,
+            inventories:
+            [
+                { objectType: "Steel Plate", amount: 1 }
+            ],
+        },
+
+        localizationCode: "tile_Floor",
+        unlocalizedDescription: "tile_Floor_desc",
+    },
+],
