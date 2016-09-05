@@ -2,7 +2,7 @@
 
 /*
     Comments can be used in single line '//',
-    or multi line '/* ... */' variants.
+    or multi line '/ * ... * /' variants.
 */
 
 // Because every file in SKON is considered a map, every item in the root level must be a key value pair.
@@ -16,7 +16,7 @@ VerisionName: "Octopus",
 Author: {
     FirstName: "Julius",
     LastName: "Häger",
-    Nickname: "Noggin_Bops"
+    Nickname: "Noggin_Bops",
     Email: "Julius_hager@hotmail.com"
 },
 
@@ -30,7 +30,7 @@ ExampleFloat: 10.4,
 
 ExampleBoolean: true,
 
-ExampleDatetime: 1979-05-27T07:32:00Z,
+ExampleDatetime: @296638320,
 
 ExampleArray: [ "This", "is", "an", "array", "of", "strings" ],
 
@@ -61,8 +61,8 @@ MapOfAllDataTypes: {
     Integer: 1,
     Float: 0.3,
     Boolean: true,
-    Datetime: 1979-05-27T00:32:00.999999-07:00,
-    Array: [] //This is an empty array, the datatype is not specified.
+    Datetime: @296613120,
+    Array: [], //This is an empty array, the datatype is not specified.
     Map: {} //This is an empty map.
 },
 
