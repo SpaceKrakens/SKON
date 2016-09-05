@@ -1,0 +1,18 @@
+required RootMap: {
+    
+    required KeyValuePair: string,
+
+    optional DifferentTypes: float,
+
+    //An empty schema map means that anything is allowed
+    required NestledMap: { },
+
+    required TestArray: [string],
+
+    required TestArray: [map: {
+        required Example: string
+    }],
+
+},
+
+optional OtherMap: { }

@@ -1,0 +1,29 @@
+
+composite Furniture{
+
+    requires Name: string
+    requires Description: string
+    requires TypeTag: string
+    requires MovementCost: float
+    requires Width: int
+    requires Height: int
+    requires LinksToNeighbours: bool
+    requires EnclosesRooms: bool
+    requires DragType: string
+
+    optional BuildingJob [] : Inventory
+
+    optional DeconstructJob [] : Inventory
+
+    optional Params {}
+
+    required LocalizationCode: string
+    requred UnlocalizedDescription: string
+
+}
+
+composite Inventory: {
+
+    requires ObjectType: string
+    requires Amount: int
+}

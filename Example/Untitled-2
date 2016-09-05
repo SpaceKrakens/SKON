@@ -1,0 +1,34 @@
+Furniture:{
+
+    Name: "Steel Wall"
+    Description: "This is a steel wall."
+    TypeTag: "Wall"
+    MovementCost: 0
+    Width: 0
+    Height: 0
+    LinksToNeighbours: true
+    EnclosesRooms: true
+    DragType: "Path"
+
+    BuildingJob [
+        Inventory: {
+            ObjectType: "Steel Plate"
+            Amount: 5
+        }
+    ]
+
+    DeconstructJob [
+        Inventory: {
+            ObjectType: "Steel Plate"
+            Amount: 3
+        }
+    ]
+
+    Params {
+        thermal_diffusivity: 0.0
+    }
+
+    LocalizationCode: "furn_steel_wall"
+    UnlocalizedDescription: "furn_steel_wall_desc"
+ 
+}
