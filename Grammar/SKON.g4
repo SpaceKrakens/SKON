@@ -7,7 +7,7 @@ skon
 
 // A map without the surrounding '{' '}'
 open_map
-    : pair (SEPARATOR pair)* (SEPARATOR)*
+    : pair (SEPARATOR pair)* (SEPARATOR)?
     ;
 
 // A map that expects any number of key-value pairs separated by commas
@@ -21,30 +21,34 @@ pair
    : KEY DEFINE value
    ;
 
+// A array without the surrounding '[' ']'
+open_array
+    :   value (SEPARATOR value)* (SEPARATOR)?
+    ;
+
 // An array that expects any number of values separated by commas
 array
-   : OPEN_ARRAY value (SEPARATOR value)* CLOSE_ARRAY
+   : OPEN_ARRAY open_array CLOSE_ARRAY
    | OPEN_ARRAY CLOSE_ARRAY
    ;
 
-// A integer or float
-number
-    : (INTEGER | FLOAT)
+// Any simple value, ie terminals
+simple_value
+    : (STRING | DATETIME | INTEGER | FLOAT | TRUE | FALSE)
     ;
 
-// 'true' or 'false'
-bool
-    : (TRUE |FALSE)
+// Any complex value, ie values containing values
+complex_value
+    : map
+    | array
     ;
 
-// Any value in SKON
+
+// Any value
 value
-   : (STRING | DATETIME)
-   | number
-   | bool
-   | map
-   | array
-  ;
+   : simple_value
+   | complex_value
+   ;
 
 // A '@' followed by a unix timestamp
 DATETIME
