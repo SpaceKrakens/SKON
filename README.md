@@ -62,9 +62,9 @@ required RootMap: {
     // This specifies that a KeyValue pair called "DifferentTypes" of type float could be defined.
     optional DifferentTypes: float,
 
-    // An empty schema map means that anything is allowed
+    // An empty schema map means that any kind of map is allowed
     required NestedMap: { },
-
+    
     // This means that an array of strings called "TestArray" needs to be defined
     required TestArray: [string]
 
