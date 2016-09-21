@@ -52,7 +52,7 @@ ArrayOfMaps: [
     },
     {
         AnotherKey: "YetAnotherValue"
-    }
+    },
 ],
 
 //And here is a map containing all other data types
