@@ -25,14 +25,14 @@ Map: {
     // This is a nested map.
     NestedMap: {
         WhateverValue: 0.0,
-        AnotherValue: "This is a value"
+        AnotherValue: "This is a value",
     },
 
     // This is an array, type is inferred from the first element
     TestArray: [
         "Test",
-        "asdf"
-    ]
+        "asdf",
+    ],
 },
 
 // This is an empty map
@@ -66,12 +66,12 @@ required RootMap: {
     required NestedMap: { },
     
     // This means that an array of strings called "TestArray" needs to be defined
-    required TestArray: [string]
+    required TestArray: [string],
 
 },
 
 // A optional map of anything
-optional OtherMap: { }
+optional OtherMap: { },
 ```
 ## Language specifications
 
@@ -118,8 +118,8 @@ The data type of an array in inferred by the first entry's type. Even arrays of 
     "an",
     "array",
     "of",
-    "strings"
-]
+    "strings",
+],
 ```
 
 #### Maps
@@ -137,8 +137,8 @@ So a map would then look like this:
 ```
 {
     key1: value1,
-    key2: value2
-}
+    key2: value2,
+},
 ```
 
 Every file In SKON is a map, so all elements in root has to be a key value pair.
@@ -150,9 +150,8 @@ Name: "SomeName",
 
 Map: {
 
-    SomeKey: "SomeValue"
-
-}
+    SomeKey: "SomeValue",
+},
 ```
 
 #### Datetime
