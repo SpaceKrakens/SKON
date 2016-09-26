@@ -49,7 +49,7 @@ Tiles:
             jobTime: 0.5,
             inventories:
             [
-                { objectType: "Steel Plate", amount: 1 }
+                { objectType: "Steel Plate", amount: 1, },
             ],
         },
 

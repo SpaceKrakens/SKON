@@ -13,11 +13,12 @@ Version: "0.0.1",
 VersionName: "Octopus",
 
 //A map of the authors details
-Author: {
+Author: 
+{
     FirstName: "Julius",
     LastName: "Häger",
     Nickname: "Noggin_Bops",
-    Email: "Julius_hager@hotmail.com"
+    Email: "Julius_hager@hotmail.com",
 },
 
 //Example of different data types
@@ -26,51 +27,55 @@ ExampleString: "This is a string",
 
 ExampleInteger: 10,
 
-ExampleFloat: 10.4,
+ExampleDouble: 10.4,
 
 ExampleBoolean: true,
 
 ExampleDatetime: @296638320,
 
-ExampleArray: [ "This", "is", "an", "array", "of", "strings" ],
+ExampleArray: [ "This", "is", "an", "array", "of", "strings", ],
 
-ExampleMap: {
+ExampleMap: 
+{
     ThisIsAKey: "To a string value",
 
-    ThisIsAnotherKey: 1 //To a integer value
+    ThisIsAnotherKey: 1, //To a integer value
 },
 
 //You can commbine the different datatypes
 
 //Here is an array of maps
-ArrayOfMaps: [
+ArrayOfMaps: 
+[
     {
-        Key: "Value"
+        Key: "Value",
     },
     {
-        Key: "AnotherValue"
+        Key: "AnotherValue",
     },
     {
-        AnotherKey: "YetAnotherValue"
+        AnotherKey: "YetAnotherValue",
     },
 ],
 
 //And here is a map containing all other data types
-MapOfAllDataTypes: {
+MapOfAllDataTypes: 
+{
     String: "String type",
     Integer: 1,
-    Float: 0.3,
-    Boolean: true,
-    Datetime: @296613120,
+    Double: 0.3, //
+    Boolean: true, //The boolean value true
+    Datetime: @296613120, //This is a unix timestamp
     Array: [], //This is an empty array, the datatype is not specified.
-    Map: {} //This is an empty map.
+    Map: {}, //This is an empty map.
 },
 
 //Arrays of arrays work too!
 
 //This is an array of string arrays
-ArrayOfArrayOfStrings: [
-    [ "Index: 0_0", "Index: 0_1" ],
-    [ "Index: 1_0", "Index: 1_1" ],
-    [ "Index: 2_0", "Index: 2_1" ]
-]
+ArrayOfArrayOfStrings: 
+[
+    [ "Index: 0_0", "Index: 0_1", ],
+    [ "Index: 1_0", "Index: 1_1", ],
+    [ "Index: 2_0", "Index: 2_1", ],
+],

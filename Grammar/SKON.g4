@@ -7,7 +7,7 @@ skon
 
 // A map without the surrounding '{' '}'
 open_map
-    : pair (SEPARATOR pair)* (SEPARATOR)?
+    : (pair SEPARATOR)*
     ;
 
 // A map that expects any number of key-value pairs separated by commas
@@ -23,7 +23,7 @@ pair
 
 // A array without the surrounding '[' ']'
 open_array
-    :   value (SEPARATOR value)* (SEPARATOR)?
+    : (value SEPARATOR)*
     ;
 
 // An array that expects any number of values separated by commas
@@ -34,7 +34,7 @@ array
 
 // Any simple value, ie terminals
 simple_value
-    : (STRING | DATETIME | INTEGER | FLOAT | TRUE | FALSE)
+    : (STRING | DATETIME | INTEGER | DOUBLE | TRUE | FALSE)
     ;
 
 // Any complex value, ie values containing values
@@ -113,8 +113,8 @@ fragment HEX
    : [0-9a-fA-F]
    ;
 
-// Any Float number
-FLOAT
+// Any Double number
+DOUBLE
    : '-'? INT '.' [0-9] + EXP? | '-'? INT EXP | '-'? INT
    ;
 
@@ -138,7 +138,7 @@ fragment DIGIT
    : [0-9]
    ;
 
-// Float exponent part
+// Double exponent part
 fragment EXP
    : [Ee] [+\-]? INT
    ;
