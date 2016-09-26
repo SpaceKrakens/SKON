@@ -43,7 +43,7 @@ OtherMap: {
     for multiline
     comments! :D
     */
-}
+},
 ```
 
 ## Schema
