@@ -2,8 +2,12 @@ grammar SKON;
 
 // The root of a file is already a map so no need for the brackets
 skon
-   : open_map
+   : meta* open_map
    ;
+
+meta
+    : METADELIMIT KEY DEFINE simple_value METADELIMIT
+    ;
 
 // A map without the surrounding '{' '}'
 open_map
@@ -52,7 +56,7 @@ value
 
 // A '@' followed by a unix timestamp
 DATETIME
-    : '@' INTNOZERO 
+    : '@' (INTNOZERO 
     | YEAR '-' MONTH '-' DAY 
     | HOUR ':' MINUTE ':' SECOND ZULU 
     | HOUR ':' MINUTE ':' SECOND '.' DIGIT* ZULU
@@ -61,14 +65,16 @@ DATETIME
     | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND ZULU 
     | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND '.' DIGIT* ZULU
     | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND ('+'|'-') HOUR ':' MINUTE
-    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND '.' DIGIT* ('+'|'-') HOUR ':' MINUTE
+    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND '.' DIGIT* ('+'|'-') HOUR ':' MINUTE)
     ;
 
 // True and false is before to get mached before KEY
 TRUE: 'true';
 FALSE: 'false';
 
-// Any number of characters
+METADELIMIT
+    : '~'
+    ;
 
 KEY
     : [a-zA-Z]CHAR+
