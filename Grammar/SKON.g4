@@ -77,7 +77,7 @@ METADELIMIT
     ;
 
 KEY
-    : [a-zA-Z]CHAR+
+    : [a-zA-Z]CHAR*
     ;
 
 // Any character

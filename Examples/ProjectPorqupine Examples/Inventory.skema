@@ -1,0 +1,11 @@
+
+def Item:
+{
+    req ObjectType: string,
+    req MaxStackSize: int,
+    req BasePrice: double,
+    req Category: string,
+},
+
+req Inventories: [ #Item ],
+
