@@ -12,9 +12,10 @@ It's also notable that it has a schema. So you don't have to just blindly trust 
 The following is an example showing the syntax of the language:
 
 ```c
-~Version: 1~ // This is the SKON version header.
-
 //SKON supports comments!
+/* and multiline ones too! :D */
+
+~Version: 1~ // This is the SKON version header.
 
 // Every SKON file is considered a map so everything is stored in key-value pairs.
 
@@ -50,7 +51,7 @@ The schema language for SKON is called SKEMA. The following is an example of a S
 ```scala
 ~Version: 1~
 
-// SKEMA supports comments!
+// SKEMA also supports comments!
 
 // Defines a structure "Color" containing a string "Name" and int "Color"
 def Color:
@@ -59,8 +60,9 @@ def Color:
     Color: int,
 },
 
-// Defines that an array called Colors needs to exits and the all the elements most conform to Color
-Colors: [ #Color ],
+// Defines that an array called Colors needs to exits with grater than zero elements
+// and that the all the elements most conform to the Color definition.
+Colors: [ #Color ] (greater [0]),
 ```
 
 A quick SKON file that is valid for this SKEMA could look like this:
