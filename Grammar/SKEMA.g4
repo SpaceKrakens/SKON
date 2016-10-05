@@ -7,7 +7,7 @@
 grammar SKEMA;
 
 skema
-    : (meta)+ (entry SEPARATOR)*
+    : meta* (entry SEPARATOR)*
     ;
 
 meta
