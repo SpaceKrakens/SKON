@@ -1,3 +1,6 @@
+~Version: 1~
+~SKEMA: "./Inventory.skema"~
+
 Inventories: 
 [
     { objectType: "Raw Iron",    maxStackSize: 50, basePrice: 0.8, category: "inv_cat_raw", },

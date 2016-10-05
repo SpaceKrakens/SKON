@@ -1,0 +1,12 @@
+~Version: 1~
+
+def Item:
+{
+    ObjectType: string,
+    MaxStackSize: int,
+    BasePrice: double,
+    Category: string,
+},
+
+Inventories: [ #Item ],
+

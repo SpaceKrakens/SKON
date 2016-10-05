@@ -11,105 +11,119 @@ It's also notable that it has a schema. So you don't have to just blindly trust 
 
 The following is an example showing the syntax of the language:
 
-```
+```c
 //SKON supports comments!
+/* and multiline ones too! :D */
 
-// This is a map, it can contain every type of data type.
-Map: {
+~Version: 1~ // This is the SKON version header.
 
-    // This is a key value pair. The type is inferred from the syntax of the value (This is a string)
-    KeyValuePair: "Value",
+// Every SKON file is considered a map so everything is stored in key-value pairs.
 
-    DifferentTypes: 1.1,
+// This is a value in the root map. The key is "RootKey" and it stores a string value "RootValue".
+RootKey: "RootValue",
 
-    // This is a nested map.
-    NestedMap: {
-        WhateverValue: 0.0,
-        AnotherValue: "This is a value",
+// This is a map inside the root map, it stores data in key-value pairs.
+MapKey: {
+
+    StringKey: "StringValue", // N.B.! In SKON every key value ends with a comma!! Even if it's the last one!!
+
+    // SKON has support for different data types!
+    IntKey: 1,
+    DoubleKey: 1.1,
+    BoolKey: true,
+    DateTimeKey: @2016-10-05, //N.B. You can read more about DateTimes in SKON below!
+
+    // In addition to maps SKON also has arrays!
+    StringArrayKey: [ "This", "is", "a", "string", "array!", ], // N.B. Note the comma after the last string!
+
+    // And of course nested maps in maps work, as expected!
+    NestedMap:
+    {
+        ANestedValueKey: "This is a nested value",
     },
-
-    // This is an array, type is inferred from the first element
-    TestArray: [
-        "Test",
-        "asdf",
-    ],
-},
-
-// This is an empty map
-OtherMap: {
-    /*
-    This language
-    has support
-    for multiline
-    comments! :D
-    */
 },
 ```
 
-## Schema
+## SKEMA
 
-The language also supports schemas. Here is an example of a schema for the above SKON:
+The schema language for SKON is called SKEMA. The following is an example of a SKEMA file and a maching SKON file.
 
-```
-// Schemas supports comments!
+```scala
+~Version: 1~
 
-// This specifies that a map called "RootMap" needs to exist in the file
-required RootMap: {
-    
-    // This specifies that a KeyValue pair called "KeyValuePair" needs to exist and be of type string
-    required KeyValuePair: string,
+// SKEMA also supports comments!
 
-    // This specifies that a KeyValue pair called "DifferentTypes" of type float could be defined.
-    optional DifferentTypes: float,
-
-    // An empty schema map means that any kind of map is allowed
-    required NestedMap: { },
-    
-    // This means that an array of strings called "TestArray" needs to be defined
-    required TestArray: [string],
-
+// Defines a structure "Color" containing a string "Name" and int "Color"
+def Color:
+{
+    Name: string,
+    Color: int,
 },
 
-// A optional map of anything
-optional OtherMap: { },
+// Defines that an array called Colors needs to exits with grater than zero elements
+// and that the all the elements most conform to the Color definition.
+Colors: [ #Color ] (greater [0]),
 ```
+
+A quick SKON file that is valid for this SKEMA could look like this:
+
+```c
+~Version: 1~
+~SKEMA: "./Colors.skema"~
+
+Colors:
+[
+    { Name: "Red", Color: 0xFF0000, },
+    { Name: "Green", Color: 0x00FF00, },
+    { Name: "Blue", Color: 0x0000FF, },
+],
+```
+
 ## Language specifications
 
 ### Types
 
-The language has a few built in types data types that allows for complex data to be represented.
+The language has a eight built in data types that allows data to be easily represented.
 
-The built in types are: 
+The built in types are devided into two categories, Simple types and Complex types.
+
+The following is a list of the eight types in their respective category.
+
+#### Simple types:
 
 * String
 * Integer
-* Float
+* Double
 * Boolean
 * Datetime
+
+#### Complex types:
 * Array
 * Map
 
 ### Syntax
 
-In SKON all simple data is represented in plain text with no additional syntax (except for strings which are surrounded with double quotes).
+In SKON most simple data is represented in plain text with no additional syntax.
+
+The exceptions to this is Strings, witch are quoted and DateTimes wich start with an `@`.
 
 Here are a few examples:
 
-* `0` is a Integer.
+* `0` is an Integer.
 * `"example"` is a String.
-* `0.2` is a Float.
+* `0.2` is a Double.
 * `true` is a Boolean.
+* `@2016-01-01` is a DateTime
 
-There are two data types that are considered complex:
 
-* Arrays
-* Maps
+
+The two complex types just enclose data with either braces or brackets.
 
 #### Arrays
 
-Arrays are written as data surrounded by square parenthesises with every entry separated by a comma.
+Arrays are written as data surrounded by brackets with every entry separated by a comma.
 
-The data type of an array in inferred by the first entry's type. Even arrays of arrays or maps are possible, should the need for complex arrays arise.
+An array can contain any data type if not otherwise stated in a SKEMA.
 
 ```
 [
@@ -124,20 +138,20 @@ The data type of an array in inferred by the first entry's type. Even arrays of 
 
 #### Maps
 
-A map is written as any number of key value pairs separated by a comma surrounded in curly braces.
+A map is written as any number of key value pairs followed by a comma surrounded in curly braces.
 
 A key value pair is written as such:
 
 `key: value`
 
-Where the key is plain text and the value is any datatype.
+Where the key is plain text and the value is any data type.
 
 So a map would then look like this:
 
 ```
 {
-    key1: value1,
-    key2: value2,
+    Key1: value1,
+    Key2: value2,
 },
 ```
 
@@ -154,7 +168,7 @@ Map: {
 },
 ```
 
-#### Datetime
+### Datetimes
 
 There are numerous ways to write date and time in SKON, most of which are based upon [RFC 3339/ISO 8601](https://tools.ietf.org/html/rfc3339#section-5.6). Additionally to this standard, SKON supports UNIX Timestamps.
 

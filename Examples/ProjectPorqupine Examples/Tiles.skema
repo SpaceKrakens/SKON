@@ -1,0 +1,31 @@
+~Version: 1.0~
+
+def JobInventory:
+{
+    ObjectType: string,
+    Amount: int,
+},
+
+def BuildingJob:
+{
+    JobTime: double,
+    optional Inventories: [ #JobInventory ],
+},
+
+def Tile:
+{
+    TileType: string,
+    Name: string,
+    Description: string,
+    BaseMovementCost: double,
+    LinksToNeighbours: bool,
+
+    optional CanPlaceHere: [ string ],
+
+    BuildingJob: #BuildingJob,
+
+    LocalizationCode: string,
+    UnlocalizedDescription: string,
+},
+
+Tiles: [ #Tile ],
