@@ -7,12 +7,16 @@
 grammar SKEMA;
 
 skema
-    : meta* (entry SEPARATOR)*
+    : (meta)+ (entry SEPARATOR)*
     ;
 
-// FIXME!! Do proper handling for this
 meta
-    : METADELIMIT KEY DEFINE '1.0' METADELIMIT
+    : METADELIMIT KEY DEFINE simple_value METADELIMIT
+    ;
+
+// Any simple value, ie terminals
+simple_value
+    : (STRING_VAL | DATETIME_VAL | INTEGER_VAL | DOUBLE_VAL | TRUE | FALSE)
     ;
 
 reference
@@ -53,6 +57,10 @@ type_def
    | complex_type_def
    ;
 
+// True and false is here to get mached before KEY
+TRUE: 'true';
+FALSE: 'false';
+
 REF: '#';
 
 DEF: 'def';
@@ -61,6 +69,65 @@ OPT: 'opt';
 
 METADELIMIT
     : '~'
+    ;
+
+// Any string contained in '"' with support for escaping
+STRING_VAL
+   : '"' (ESC | ~ ["\\])* '"'
+   ;
+
+// The different escape characters
+fragment ESC
+   : '\\' (["\\/bfnrt] | UNICODE)
+   ;
+
+// The unicode escape
+fragment UNICODE
+   : 'u' HEX HEX HEX HEX
+   ;
+
+// Any hex number
+fragment HEX
+   : [0-9a-fA-F]
+   ;
+
+// Any Double number
+DOUBLE_VAL
+   : '-'? INT '.' [0-9] + EXP? | '-'? INT EXP | '-'? INT
+   ;
+
+// Any Integer value
+INTEGER_VAL
+    : '-'? INT
+    ;
+
+// A non negative Integer with no leading zeros
+fragment INT
+   : '0' | INTNOZERO
+   ;
+
+// A non negative Integer (excluding zero) with no leading zeros
+fragment INTNOZERO
+   : [1-9] [0-9]*
+   ;
+
+// Double exponent part
+fragment EXP
+   : [Ee] [+\-]? INT
+   ;
+
+// A '@' followed by a unix timestamp
+DATETIME_VAL
+    : '@' (INTNOZERO 
+    | YEAR '-' MONTH '-' DAY 
+    | HOUR ':' MINUTE ':' SECOND ZULU 
+    | HOUR ':' MINUTE ':' SECOND '.' DIGIT* ZULU
+    | HOUR ':' MINUTE ':' SECOND ('+'|'-') HOUR ':' MINUTE
+    | HOUR ':' MINUTE ':' SECOND '.' DIGIT* ('+'|'-') HOUR ':' MINUTE
+    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND ZULU 
+    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND '.' DIGIT* ZULU
+    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND ('+'|'-') HOUR ':' MINUTE
+    | YEAR '-' MONTH '-' DAY 'T' HOUR ':' MINUTE ':' SECOND '.' DIGIT* ('+'|'-') HOUR ':' MINUTE)
     ;
 
 // Open and closing brackets for maps
@@ -95,6 +162,39 @@ KEY
 fragment CHAR
     : [a-zA-Z0-9_]
     ;
+
+fragment YEAR
+    : DIGIT DIGIT DIGIT DIGIT
+    ;
+
+fragment MONTH
+    : DIGIT DIGIT
+    ;
+
+fragment DAY
+    : DIGIT DIGIT
+    ;
+
+fragment HOUR
+    : DIGIT DIGIT
+    ;
+
+fragment MINUTE
+    : DIGIT DIGIT
+    ;
+
+fragment SECOND
+    : DIGIT DIGIT
+    ;
+
+fragment ZULU
+   : [Zz]
+   ;
+
+// A single Integer digit
+fragment DIGIT
+   : [0-9]
+   ;
 
 // Single line comments
 COMMENT
