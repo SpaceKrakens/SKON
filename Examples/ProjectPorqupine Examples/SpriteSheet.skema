@@ -1,0 +1,11 @@
+def Sprite
+{
+    Name: string,
+    x: double,
+    y: double,
+    w: double,
+    h: double,
+    optional PixlesPerUnit: int,
+},
+
+Sprites: [ #Sprite ],

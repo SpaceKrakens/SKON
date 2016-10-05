@@ -20,7 +20,8 @@ reference
     ;
 
 entry
-    : (REQ | OPT | DEF) KEY DEFINE type_def
+    : (REQ | OPT) KEY DEFINE (type_def | reference)
+    | DEF KEY DEFINE type_def
     ;
 
 // Any simple value, ie terminals
@@ -43,14 +44,13 @@ map
     ;
 
 array
-    : OPEN_ARRAY type_def CLOSE_ARRAY
+    : OPEN_ARRAY type_def? CLOSE_ARRAY
     ;
 
 // Any value
 type_def
    : simple_type_def
    | complex_type_def
-   | reference
    ;
 
 REF: '#';
