@@ -1,33 +1,31 @@
 ~Version: 1.0~
 
-def Test: string,
-
 def JobInventory:
 {
-    req ObjectType: string,
-    req Amount: int,
+    ObjectType: string,
+    Amount: int,
 },
 
 def BuildingJob:
 {
-    req JobTime: double,
-    opt Inventories: [ #JobInventory ],
+    JobTime: double,
+    optional Inventories: [ #JobInventory ],
 },
 
 def Tile:
 {
-    req TileType: string,
-    req Name: string,
-    req Description: string,
-    req BaseMovementCost: double,
-    req LinksToNeighbours: bool,
+    TileType: string,
+    Name: string,
+    Description: string,
+    BaseMovementCost: double,
+    LinksToNeighbours: bool,
 
-    opt CanPlaceHere: [ string ],
+    optional CanPlaceHere: [ string ],
 
-    req BuildingJob: #BuildingJob,
+    BuildingJob: #BuildingJob,
 
-    req LocalizationCode: string,
-    req UnlocalizedDescription: string,
+    LocalizationCode: string,
+    UnlocalizedDescription: string,
 },
 
-req Tiles: [ #Tile ],
+Tiles: [ #Tile ],

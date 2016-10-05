@@ -1,3 +1,5 @@
+~Version: 1~
+
 def Sprite
 {
     Name: string,

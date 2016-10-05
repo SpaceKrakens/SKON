@@ -1,11 +1,12 @@
+~Version: 1~
 
 def Item:
 {
-    req ObjectType: string,
-    req MaxStackSize: int,
-    req BasePrice: double,
-    req Category: string,
+    ObjectType: string,
+    MaxStackSize: int,
+    BasePrice: double,
+    Category: string,
 },
 
-req Inventories: [ #Item ],
+Inventories: [ #Item ],
 

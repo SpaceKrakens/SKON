@@ -1,6 +1,5 @@
 ~Version: 1~
 
-
 // Schemas also have comments
 /* Multilines too */
 AnyString: string, // This requires any key-string pair with key "AnyString" and any string.
