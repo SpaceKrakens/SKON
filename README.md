@@ -1,5 +1,5 @@
 # SKON
-Space Kraken Object Notation
+Space Kraken Object Notation - https://github.com/SpaceKrakens/SKON
 
 Is a language originally created to accommodate the data format language need for [Project Porcupine](https://github.com/TeamPorcupine/ProjectPorcupine).
 
