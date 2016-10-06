@@ -60,7 +60,7 @@ def Color:
     Color: int,
 },
 
-// Defines that an array called Colors needs to exits with grater than zero elements
+// Defines that an array called Colors needs to exits with greater than zero elements
 // and that the all the elements most conform to the Color definition.
 Colors: [ #Color ] (greater [0]),
 ```
