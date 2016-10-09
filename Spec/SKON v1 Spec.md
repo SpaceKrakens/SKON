@@ -9,7 +9,6 @@ SKON is meant to store data. It's not a markup language nor is it a overly compl
 It's a simple concise easily read and written language to store data in.
 
 ## Table of contents
----
 
 - [Terminology](#terminology)
 - [Encoding](#encoding) 
@@ -27,7 +26,6 @@ It's a simple concise easily read and written language to store data in.
   - [Map](#map)
 
 ## Terminology
----
 
 This section contains definitions for a few words that will be used in the document.
 
@@ -38,12 +36,10 @@ This section contains definitions for a few words that will be used in the docum
 - **needs** is useed when the parser is required to follow directions to conform to this standard.
 
 ## Encoding
----
 
 SKON is written in `UTF-8` and that is the only encoding a parser **needs** to support.
 
 ## Grammar
----
 
 If the words in this section does not make sense, you dont have to worry about this section.
 
@@ -51,7 +47,6 @@ SKON is designed as a context free language. This means that it's possible to pa
 The official grammar is defined as a ANTLR4 combined grammar, though a `ALL(*)` parser as ANTLR4 uses is not necessary to parse SKON any `LL(1)` parser should work.
 
 ## Data types
----
 
 In SKON there are eight data types, five "Simple" data types and "Complex" data types.
 
@@ -94,7 +89,6 @@ The following is a list of all of the different data types and the some notes re
   Like with arrays the number of key-value pairs **should** not be limited in any way, but when writing SKON it's recomended to keep the number of elements reasonable.
 
 ## Syntax
----
 
 Every value in SKON **should** end with a comma. Even if it's the last element in an array or a map. This will be reflected in the syntax examples below.
 
