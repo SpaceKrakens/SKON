@@ -8,6 +8,22 @@ It works well for everythng where JSON is normally used to and where XML is norm
 SKON is meant to store data. It's not a markup language nor is it a overly complex subset of a bigger language. 
 It's a simple concise easily read and written language to store data in.
 
+## Table of contents
+
+- [Encoding](#Encoding) 
+- [Grammar](#Grammar) 
+- [Data Types](#DataTypes) 
+  - [Simple Data Types](#Simple)
+  - [Complex Data Types](#Complex)
+- [Syntax](#Syntax)
+  - [String](#String)
+  - [Integer](#Integer)
+  - [Decimal](#Decimal)
+  - [Boolean](#Boolean)
+  - [DateTime](#DateTime)
+  - [Array](#Array)
+  - [Map](#Map)
+
 ## Encoding
 
 SKON is written in `UTF-8` and that is the only encoding a parser needs to support.
@@ -27,23 +43,23 @@ The following is a list of all of the different data types and the some notes re
 
 ### Simple
 
-- #### String
-- #### Integer
-- #### Double
-- #### Boolean
-- #### DateTime
+- String
+- Integer
+- Decimal
+- Boolean
+- DateTime
 
 ### Complex
 
-- #### Array
-- #### Map
+- Array
+- Map
 
 ## Syntax
 
 ### String
 
 String are double quoted. Unicode characters and other control character can be escaped with a `\`.
-The escapable contraoll characters are:
+The escapable control characters are:
 
 - b - Backspace
 - n - New line
@@ -65,7 +81,9 @@ Unicode escapes are written with a `\u` followed by four hexadecimal numbers.
 
 ### Integer
 
-Integers are written as a normal integer number with no spaces.
+Integer values **should** use a 32-bit integer.
+
+Integers are written as a normal integer number with no spaces
 
 #### Exampes
 
@@ -73,13 +91,56 @@ Integers are written as a normal integer number with no spaces.
 - `10`
 - `-2147483648`
 
-### Double
+But they can also be represented in Hexadecimal using the following prefix `0x`.
 
-Doubles can be written in 
+#### Examples
 
-#### Boolean
-#### DateTime
-#### Array
-#### Map
+- `0xFFFF`
+- `0xA`
+- `0x7FFFFFFF`
+
+### Decimal
+
+Decimal values **should** be 64-bit floating point.
+
+Decimal values can be written as two integers separated with a dot.
+
+#### Examples
+
+- `0.12`
+- `0.00000000001`
+- `1000.10001`
+
+They can also we written using E notation using either an upper case or lower case `Ee`
+
+#### Exampes
+
+- `314E-2`
+- `1.234e1000`
+- `0.1E1`
+
+### Boolean
+
+Booleans in SKON are written as either `true` or `false` only lower case.
+
+#### Exampes
+
+- `true`
+- `false`
+
+
+##### NOT VALID:
+
+- `TRUE`
+- `False`
+
+### DateTime
+
+DateTimes **should** be able to represent any date or time. And not be limited to only Unix-time.
+
+
+
+### Array
+### Map
 
 

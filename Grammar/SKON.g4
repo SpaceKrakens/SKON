@@ -119,15 +119,15 @@ fragment HEX
    : [0-9a-fA-F]
    ;
 
-// Any Double number
-DOUBLE
-   : '-'? INT '.' [0-9] + EXP? | '-'? INT EXP | '-'? INT
-   ;
-
 // Any Integer value
 INTEGER
     : '-'? INT
     ;
+
+// Any Double number
+DOUBLE
+   : '-'? INT '.' [0-9]+ EXP? | '-'? INT EXP
+   ;
 
 // A non negative Integer with no leading zeros
 fragment INT
