@@ -180,11 +180,11 @@ DateTimes:
     
     @2310-12-01,                        // Just the date in the YYYY-MM-DD format.
     
-    @2310-12-01T13:37:01Z,              // Date and additionally time in the HH:MM:SSZ format.
+    @2310-12-01T13:37:01Z,              // Date and additionally time in the HH:mm:ssZ format.
                                         // Z stands for Zulu and means no difference from UTC.
                                         // Date and time are always separated by a T (for time).
     
-    @2310-12-01T13:37:01.02Z,           // Date and additionally time in the HH:MM:SS.SECFRACZ format.
+    @2310-12-01T13:37:01.02Z,           // Date and additionally time in the HH:mm:ss.SECFRACZ format.
                                         // SECFRAC is a fraction of a second. Technically SKON gives
                                         // you no limit but we advise to stay reasonable.
     

@@ -186,7 +186,35 @@ That means that `@-9223372036854775808,` is the smallest unix timestamp and `@92
 
 Other numbers like `@-9223372036854775810,` or `@9223372036854775809,` are not valid!
 
-The other DateTime formats **should** not be limited to Unix time only and can represent any date supported by  
+The other DateTime formats **should** not be limited to Unix time only and can represent any date supported by the syntax.
+
+A DateTime can be represented using the following format `yyyy-MM-dd` where `yyyy` is the year, `MM` is the month and `dd` is the day. Written as integers.
+
+#### Examples
+
+- `@2016-10-09,`
+- `@1136-11-15,`
+
+DateTimes can also be represented as a time of day using the following syntax, `HH:mm:ss` or `HH:mm:ss.sfrac` followed by a UTC time zone offset written as either `Z` for no offset or `+/-HH:mm` for the appropriate UTC offset.
+
+In this format `HH` is hours, `mm` is minutes and `ss` is seconds. 
+Additionally `sfrac` is a fraction of a second expressed with any precision. 
+A parser **should** be able to parse any number of `sfrac` digits, though it is only expected to have 3 digit `sfrac` (milisecond) precision but a parser **could** have greater precision.
+
+#### Examples
+
+- `@12:00:00Z,`
+- `@16:30:20.345-03:30,`
+- `@12:34:56.789Z,`
+- `@00:00:00.000+10:15,`
+
+Date and Time can be written together written as any date and any time separated with a `T`.
+
+#### Examples
+
+- `@2310-12-01T13:37:01.002+09:00,`
+- `@2310-12-01T13:37:01.02Z,`
+- `@2310-12-01T13:37:01Z,`
 
 ### Array
 ---
@@ -197,6 +225,7 @@ Arrays are written as a list of values all followed by a comma surrounded by two
 
 - `[ "String", "array", ],`
 - `[ 123, 456, ],`
+- `[ "Mixed", 1.23, "Array", true, ],`
 
 ### Map
 ---
