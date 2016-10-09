@@ -90,8 +90,9 @@ The following is a list of all of the different data types and the some notes re
 ## Syntax
 
 Every value in SKON **should** end with a comma, even if it is the last element in an array or a map. This is to keep the grammar context-free.
-
 This will be reflected in the syntax examples below.
+
+Every SKON file **should** be considered an implicit map without the surrounding `{` `}`.
 
 ### String
 ---
@@ -199,7 +200,9 @@ Arrays are written as a list of values all followed by a comma surrounded by two
 ### Map
 ---
 
-Maps are a written as a collection of key-value pairs, all followed by a comma and surrounded by two `{` `}` braces. Keys are written as any letter `A-Za-z` followed by any number of the following characters `A-Za-z0-9_` ending with a `:`.
+Maps are a written as a collection of key-value pairs, all followed by a comma and surrounded by two `{` `}` braces.
+
+Keys are written as any letter `A-Za-z` followed by any number of the following characters `A-Za-z0-9_` ending with a `:`.
 
 #### Examples
 
@@ -213,4 +216,42 @@ Maps are a written as a collection of key-value pairs, all followed by a comma a
 - `./spec/SKON v1 Spec.md:`
 - `S p a c e s: `
 
+The value can be any data type and are written after the `:` of the key.
 
+#### Example
+
+```c
+{
+  KeyToString: "String value",
+  KeyToInt: 1,
+  KeyToDecimal: 1.2,
+  KeyToBool: true,
+  KeyToDateTime: @2016-10-09,
+  KeyToArray: [ "String", 1, 1.2, true, @2016-10-09, ],
+  KeyToMap:
+  {
+    KeyToString: "String inside nested map",
+  },
+},
+```
+
+This example would not be a valid SKON file as a SKON file is an implicit map. The solutiuon to make the example a valid file is to either remove the surrounding `{` `}` or making the map a key-value pair.
+
+
+
+`KeyToMap: { ... }`
+
+or the more preferable solution
+
+```c
+KeyToString: "String value",
+KeyToInt: 1,
+KeyToDecimal: 1.2,
+KeyToBool: true,
+KeyToDateTime: @2016-10-09,
+KeyToArray: [ "String", 1, 1.2, true, @2016-10-09, ],
+KeyToMap:
+{
+  KeyToString: "String inside nested map",
+},
+```
