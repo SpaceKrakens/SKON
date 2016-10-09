@@ -3,10 +3,10 @@
 This is the specification for language version 1 of SKON.
 
 SKON or Space Kraken Object Notation is a data serialization language designed to be easy to understand and write. 
-It works well for everythng where JSON is normally used to and where XML is normally misused.
+It works well for everything where JSON is normally used to and where XML is normally misused.
 
-SKON is meant to store data. It's not a markup language nor is it a overly complex subset of a bigger language. 
-It's a simple concise easily read and written language to store data in.
+SKON is meant to store data. It's not a markup language nor is it a overly complex superset of a bigger language. 
+It is a simple, concise, easily read and written language to store data in.
 
 ## Table of contents
 
@@ -37,18 +37,18 @@ This section contains definitions for a few words that will be used in the docum
 
 ## Encoding
 
-SKON is written in `UTF-8` and that is the only encoding a parser **needs** to support.
+SKON is written in `UTF-8` and that is the only encoding a parser **needs** to support. A parser **could** support other encodings but should not be expected to.
 
 ## Grammar
 
 If the words in this section does not make sense, you dont have to worry about this section.
 
-SKON is designed as a context free language. This means that it's possible to parse SKON really effectivly using an `LL(1)` parser.
-The official grammar is defined as a ANTLR4 combined grammar, though a `ALL(*)` parser as ANTLR4 uses is not necessary to parse SKON any `LL(1)` parser should work.
+SKON is designed as a context free language. This means that it's possible to parse SKON effectivly using an `LL(1)` parser.
+The official grammar is defined as a ANTLR4 combined grammar, though an `ALL(*)` parser as ANTLR4 uses is not necessary to parse SKON, any `LL(1)` parser should work.
 
 ## Data types
 
-In SKON there are eight data types, five "Simple" data types and "Complex" data types.
+In SKON there are eight data types, five "Simple" data types and two "Complex" data types.
 
 The following is a list of all of the different data types and the some notes regarding them.
 
@@ -60,7 +60,7 @@ The following is a list of all of the different data types and the some notes re
 
 - #### Integer
 
-  Integer values **should** use a 32-bit integer.
+  Integer values **should** be 32-bit.
 
 - #### Decimal
 
@@ -69,10 +69,9 @@ The following is a list of all of the different data types and the some notes re
 - #### Boolean
 - #### DateTime
 
-  DateTimes **should** be able to represent any date or time. And not be limited to only Unix-time.
+  DateTimes **should** be able to represent any date or time and not be limited to only Unix-time.
   
   DateTimes that only specify time of day **should** assume "today" as the date.
-  
   
 
 
@@ -80,17 +79,19 @@ The following is a list of all of the different data types and the some notes re
 
 - #### Array
   
-  The number of elements in an arrays **should** not be limited in any way, though a it's recomended to keep that number resonable in respects to memory usage, file size and parsing times. 
+  The number of elements in an arrays **should** not be limited in any way, though a it's recommended to keep that number reasonable in respects to memory usage, file size and parsing times. 
 
-  Arrays **should** also not be limited to just one data type. If limiting the data in an array is needed it's recomended to validate the SKON with a [SKEMA](#) definition, as SKEMA allows for limiting of data types in an array.
+  Arrays **should** also not be limited to just one data type. If limiting the data in an array is needed it's recommended to validate the SKON with a [SKEMA](#) definition, as SKEMA allows for limiting of data types in an array.
 
 - #### Map
 
-  Like with arrays the number of key-value pairs **should** not be limited in any way, but when writing SKON it's recomended to keep the number of elements reasonable.
+  Like with arrays the number of key-value pairs **should** not be limited in any way, but when writing SKON it's recommended to keep the number of elements reasonable.
 
 ## Syntax
 
-Every value in SKON **should** end with a comma. Even if it's the last element in an array or a map. This will be reflected in the syntax examples below.
+Every value in SKON **should** end with a comma. Even if it's the last element in an array or a map. This is to keep the grammar contaxt-free.
+
+This will be reflected in the syntax examples below.
 
 ### String
 ---
