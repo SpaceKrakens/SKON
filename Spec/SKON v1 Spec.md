@@ -100,15 +100,16 @@ Every SKON file **should** be considered an implicit map without the surrounding
 String values are double quoted. Unicode characters and other control character can be escaped with a `\`.
 The escapable control characters are:
 
-- b - Backspace
-- n - New line
-- f - Form feed
-- r - Carrige return
-- t - Tab
-- " - Double quote
-- \ - Backslash
+- `b` - Backspace
+- `n` - New line
+- `f` - Form feed
+- `r` - Carrige return
+- `t` - Tab
+- `"` - Double quote
+- `\` - Backslash
 
 #### Examples
+
 - `"This is a normal string",`
 - `"This is an escaped string \n \"Quote inside of string\"",`
 
@@ -202,12 +203,13 @@ Arrays are written as a list of values all followed by a comma surrounded by two
 
 Maps are a written as a collection of key-value pairs, all followed by a comma and surrounded by two `{` `}` braces.
 
-Keys are written as any letter `A-Za-z` followed by any number of the following characters `A-Za-z0-9_` ending with a `:`.
+Keys are written as any letter `A-Za-z_` followed by any number of the following characters `A-Za-z0-9_` ending with a `:`.
 
 #### Examples
 
 - `Key:`
 - `This_Is_A_Key:`
+- `_AnotherKey:`
 
 #### The following examples are invalid!
 
