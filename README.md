@@ -178,24 +178,24 @@ DateTimes:
     @1,                                 // These two values are valid UNIX Timestamps.
     @1473113744,
     
-    2310-12-01,                         // Just the date in the YYYY-MM-DD format.
+    @2310-12-01,                        // Just the date in the YYYY-MM-DD format.
     
-    2310-12-01T13:37:01Z,               // Date and additionally time in the HH:MM:SSZ format.
+    @2310-12-01T13:37:01Z,              // Date and additionally time in the HH:MM:SSZ format.
                                         // Z stands for Zulu and means no difference from UTC.
                                         // Date and time are always separated by a T (for time).
     
-    2310-12-01T13:37:01.02Z,            // Date and additionally time in the HH:MM:SS.SECFRACZ format.
+    @2310-12-01T13:37:01.02Z,           // Date and additionally time in the HH:MM:SS.SECFRACZ format.
                                         // SECFRAC is a fraction of a second. Technically SKON gives
                                         // you no limit but we advise to stay reasonable.
     
-    2310-12-01T13:37:01+09:00,          // To specify a different offset than UTC+0, substitute Z with
+    @2310-12-01T13:37:01+09:00,         // To specify a different offset than UTC+0, substitute Z with
                                         // either +HH:MM or -HH:MM.
     
-    2310-12-01T13:37:01.002+09:00,      // This obviously also works with fractions of seconds.
+    @2310-12-01T13:37:01.002+09:00,     // This obviously also works with fractions of seconds.
     
-    13:37:01Z,                          // You can also write times alone by obmitting the date
-    13:37:01.02Z,                       // part and the date/time separator T.
-    13:37:01+09:00,                     // All four different formats for times are supported.
-    13:37:01.002+09:00,
+    @13:37:01Z,                         // You can also write times alone by obmitting the date
+    @13:37:01.02Z,                      // part and the date/time separator T.
+    @13:37:01+09:00,                    // All four different formats for times are supported.
+    @13:37:01.002+09:00,
 ],
 ```
