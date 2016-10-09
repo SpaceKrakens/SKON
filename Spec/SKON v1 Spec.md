@@ -17,13 +17,13 @@ It's a simple concise easily read and written language to store data in.
   - [Simple Data Types](#simple)
   - [Complex Data Types](#complex)
 - [Syntax](#syntax)
-  - [String](#string)
-  - [Integer](#integer)
-  - [Decimal](#decimal)
-  - [Boolean](#boolean)
-  - [DateTime](#dateTime)
-  - [Array](#array)
-  - [Map](#map)
+  - [String](#string-1)
+  - [Integer](#integer-1)
+  - [Decimal](#decimal-1)
+  - [Boolean](#boolean-1)
+  - [DateTime](#dateTime-1)
+  - [Array](#array-1)
+  - [Map](#map-1)
 
 ## Terminology
 
@@ -78,13 +78,13 @@ The following is a list of all of the different data types and the some notes re
 
 ### Complex
 
-- Array
+- #### Array
   
   The number of elements in an arrays **should** not be limited in any way, though a it's recomended to keep that number resonable in respects to memory usage, file size and parsing times. 
 
   Arrays **should** also not be limited to just one data type. If limiting the data in an array is needed it's recomended to validate the SKON with a [SKEMA](#) definition, as SKEMA allows for limiting of data types in an array.
 
-- Map
+- #### Map
 
   Like with arrays the number of key-value pairs **should** not be limited in any way, but when writing SKON it's recomended to keep the number of elements reasonable.
 
