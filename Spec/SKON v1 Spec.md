@@ -8,8 +8,6 @@ It works well for everything where JSON is normally used to and where XML is nor
 SKON is meant to store data. It's not a markup language nor is it a overly complex superset of a bigger language. 
 It is a simple, concise, easily read and written language to store data in.
 
-SKON is paired with it's own schema language SKEMA which can be read more about [here](./SKEMA%20v1%20Spec.md).
-
 ## Table of contents
 
 - [Terminology](#terminology)
@@ -34,9 +32,9 @@ This section contains definitions for a few words that will be used in the docum
 
 - **could** is used when a parser could optionally support the directions, but in a general sense should be considered not supported.
 
-- **should** is used when there could be reasons for a parser to not follow the directions, this is a very strong recommendation and should be assumed to be supported in a general sense. If the parser does not follow these directives it should advertise this clearly!
+- **should** is used when there could be reasons for a parser to not follow the specification, **should** is a strong recommendation and should be assumed to be supported in a general sense. If a parser does not follow these directives it should advertise this clearly!
 
-- **needs** is used when the parser is required to follow the directives to conform to this standard.
+- **needs** is used when the parser is required to follow the directives to conform to the SKON specification.
 
 ## Encoding
 
@@ -52,6 +50,10 @@ The official grammar is defined as a ANTLR4 combined grammar, though an `ALL(*)`
 The official grammar can be found [here](../Grammar/SKON.g4).
 
 ## SKEMA
+
+SKON is paired with it's own schema language SKEMA which can be read more about [here](./SKEMA%20v1%20Spec.md).
+
+A parser **should** support SKEMA validation.
 
 ## Data types
 
