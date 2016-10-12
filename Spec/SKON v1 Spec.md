@@ -8,11 +8,14 @@ It works well for everything where JSON is normally used to and where XML is nor
 SKON is meant to store data. It's not a markup language nor is it a overly complex superset of a bigger language. 
 It is a simple, concise, easily read and written language to store data in.
 
+SKON is paired with it's own schema language SKEMA which can be read more about [here](./SKEMA%20v1%20Spec.md).
+
 ## Table of contents
 
 - [Terminology](#terminology)
 - [Encoding](#encoding) 
 - [Grammar](#grammar) 
+- [SKEMA](#SKEMA)
 - [Data Types](#dataTypes) 
   - [Simple Data Types](#simple)
   - [Complex Data Types](#complex)
@@ -45,6 +48,10 @@ If the words in this section do not make sense to you, you dont have to worry ab
 
 SKON is designed as a context free language. This means that it's possible to parse SKON effectivly using an `LL(1)` parser.
 The official grammar is defined as a ANTLR4 combined grammar, though an `ALL(*)` parser as ANTLR4 uses is not necessary to parse SKON, any `LL(1)` parser should work.
+
+The official grammar can be found [here](../Grammar/SKON.g4).
+
+## SKEMA
 
 ## Data types
 
