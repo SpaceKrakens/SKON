@@ -125,7 +125,7 @@ Arrays are written as data surrounded by brackets with every entry separated by 
 
 An array can contain any data type if not otherwise stated in a SKEMA.
 
-```
+```c
 [
     "This",
     "is",
@@ -159,7 +159,7 @@ Every file In SKON is a map, so all elements in root has to be a key value pair.
 
 This is what a file containing a string and map would look like:
 
-```
+```c
 Name: "SomeName",
 
 Map: {
@@ -172,7 +172,7 @@ Map: {
 
 There are numerous ways to write date and time in SKON, most of which are based upon [RFC 3339/ISO 8601](https://tools.ietf.org/html/rfc3339#section-5.6). Additionally to this standard, SKON supports UNIX Timestamps.
 
-```
+```c
 DateTimes: 
 [
     @1,                                 // These two values are valid UNIX Timestamps.
