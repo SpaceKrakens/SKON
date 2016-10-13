@@ -19,6 +19,7 @@ It is a simple, concise, easily read and written language to store data in.
   - [Complex Data Types](#complex)
 - [Syntax](#syntax)
   - [Metadata](#metadata)
+  - [Null](#null)
   - [String](#string-1)
   - [Integer](#integer-1)
   - [Decimal](#decimal-1)
@@ -158,6 +159,20 @@ This is an example of a valid metadata header for a SKON file.
 
 // SKON data...
 ```
+
+### Null
+---
+
+A null value in SKON is simply written as `null` all lower case. 
+
+#### Example
+
+- `null`
+
+##### NOT VALID
+
+- `NULL`
+- `Null`
 
 ### String
 ---
