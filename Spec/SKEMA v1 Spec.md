@@ -26,6 +26,10 @@ This section contains definitions for a few words that will be used in the docum
 
 ## Encoding
 
+SKEMA is written in `UTF-8` and that is the only encoding a parser **needs** to support. A parser **could** support other encodings but should not be expected to.
+
 ## Grammar
 
-## 
+## Data Types
+
+## Syntax

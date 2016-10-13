@@ -110,6 +110,8 @@ Every SKON file **should** be considered an implicit map without the surrounding
 
 SKON supports two types of comments. Slingle line comments using `//` and multi line comments using `/* comment */` syntax.
 
+Single line `//` comments end at a newline, while multi-line `/* ... */` comments end at the first `*/` (This means that there are no nested comments).
+
 #### Examples
 
 - `// Single line comment`
@@ -146,6 +148,8 @@ Then if the parser supports SKEMA it **should** support the `SKEMA` directive wh
 A parser **could** support custom metadata, but to keep compatability it **should** not force these to be present.
 
 #### Example
+
+This is an example of a valid metadata header for a SKON file.
 
 ```c
 ~Version: 1~
@@ -328,6 +332,8 @@ The value can be any data type and are written after the `:` of the key.
 ```
 
 ## File Format
+
+The filename extension for SKON files is `.skon`.
 
 In SKON, a file is implicitly considered to be a map, that means that every value in a SKON file must be a key-value pair.
 
