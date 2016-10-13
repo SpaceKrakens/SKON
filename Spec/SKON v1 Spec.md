@@ -18,6 +18,7 @@ It is a simple, concise, easily read and written language to store data in.
   - [Simple Data Types](#simple)
   - [Complex Data Types](#complex)
 - [Syntax](#syntax)
+  - [Metadata](#metadata)
   - [String](#string-1)
   - [Integer](#integer-1)
   - [Decimal](#decimal-1)
@@ -25,6 +26,7 @@ It is a simple, concise, easily read and written language to store data in.
   - [DateTime](#dateTime-1)
   - [Array](#array-1)
   - [Map](#map-1)
+- [File Format](#file-format)
 
 ## Terminology
 
@@ -102,6 +104,56 @@ Every value in SKON **should** end with a comma, even if it is the last element 
 This will be reflected in the syntax examples below.
 
 Every SKON file **should** be considered an implicit map without the surrounding `{` `}`.
+
+### Comments
+---
+
+SKON supports two types of comments. Slingle line comments using `//` and multi line comments using `/* comment */` syntax.
+
+#### Examples
+
+- `// Single line comment`
+- `/* Multi-line comment on one line */`
+
+Multi-line example.
+
+```
+/*
+  Actual 
+  multi-line
+  comment.
+*/
+```
+
+### Metadata
+---
+
+Metadata in SKON provide the parser and user with various information about the document.
+All metadata should be at the top of a SKON file.
+
+Metadata entries are surrounded by `~` chracters on both sides and contain a key-value pair.
+
+There are two metadata directives a parser **needs** to support. 
+These are as follows:
+
+- `Version` which is followed by an integer.
+- `DocumentVersion` which is followed by any datatype. This is used in applictaion to filter versions of a file.
+
+A `Version` metadata directive is required at the top of every file.
+
+Then if the parser supports SKEMA it **should** support the `SKEMA` directive which is followed by a string that locates the SKEMA file.
+
+A parser **could** support custom metadata, but to keep compatability it **should** not force these to be present.
+
+#### Example
+
+```c
+~Version: 1~
+~DocumentVersion: "1.1"~
+~SKEMA: "./DocumentSKEMA.skema"~
+
+// SKON data...
+```
 
 ### String
 ---
@@ -275,15 +327,19 @@ The value can be any data type and are written after the `:` of the key.
 },
 ```
 
-This example would not be a valid SKON file as a SKON file is an implicit map. The solutiuon to make the example a valid file is to either remove the surrounding `{` `}` or making the map a key-value pair.
+## File Format
 
+In SKON, a file is implicitly considered to be a map, that means that every value in a SKON file must be a key-value pair.
 
+To store the data in the previous example as a valid SKON file you could either wrap everything in a surrounding map.
 
 `KeyToMap: { ... }`
 
-or the more preferable solution
+Or preferably write every element as a key-value pair without the surrounding map.
 
 ```c
+~Version: 1~
+
 KeyToString: "String value",
 KeyToInt: 1,
 KeyToDecimal: 1.2,
