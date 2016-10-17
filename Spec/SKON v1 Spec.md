@@ -45,7 +45,7 @@ SKON is written in `UTF-8` and that is the only encoding a parser **needs** to s
 
 ## Grammar
 
-If the words in this section do not make sense to you, you dont have to worry about this section.
+This section is only important for people interested in making a parser for SKON.
 
 SKON is designed as a context free language. This means that it's possible to parse SKON effectivly using an `LL(1)` parser.
 The official grammar is defined as a ANTLR4 combined grammar, though an `ALL(*)` parser as ANTLR4 uses is not necessary to parse SKON, any `LL(1)` parser should work.
@@ -139,7 +139,7 @@ Metadata entries are surrounded by `~` chracters on both sides and contain a key
 There are two metadata directives a parser **needs** to support. 
 These are as follows:
 
-- `Version` which is followed by an integer.
+- `Version` which is followed by an integer. This is the SKON language version.
 - `DocumentVersion` which is followed by any datatype. This is used in applictaion to filter versions of a file.
 
 A `Version` metadata directive is required at the top of every file.

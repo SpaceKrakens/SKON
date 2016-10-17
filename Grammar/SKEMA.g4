@@ -24,7 +24,7 @@ reference
     ;
 
 entry
-    : (REQ | OPT) KEY DEFINE (type_def | reference)
+    : OPT? KEY DEFINE (type_def | reference)
     | DEF KEY DEFINE type_def
     ;
 

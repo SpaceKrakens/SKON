@@ -1,0 +1,34 @@
+def Param:
+{ 
+    Name: string,
+    Value: any,
+},
+
+def Goal:
+{
+    Description: string,
+    IsCompletedLuaFunction: string,
+    Params: [ #Param ],
+},
+
+def Reward:
+{
+    Description: string,
+    OnRewardLuaFunction: string,
+    Params: [ #Param ],
+},
+
+def Quest:
+{
+    Name: string,
+
+    Description: string,
+
+    opt PreRequiredCompletedQuests: [ string ],
+
+    Goals: [ #Goal ],
+
+    Rewards: [ #Rewards ],
+},
+
+Quests: [ #Quest ],
