@@ -10,9 +10,17 @@ It's only meant to describe a SKON file and nothing else.
 
 - [Terminology](#terminology)
 - [Encoding](#encoding) 
-- [Grammar](#grammar) 
-- [Data Types](#dataTypes)
+- [Grammar](#grammar)
 - [Syntax](#syntax)
+  - [Metadata](#metadata)
+  - [Type](#type)
+  - [Array](#array)
+  - [Map](#map)
+  - [Optional](#optional)
+  - [Definitions](#definitions)
+  - [References](#references)
+- [Reference solving](#reference-solving)
+- [File Format](#file-format)
 
 ## Terminology
 
@@ -39,15 +47,15 @@ The official grammar can be found [here](../Grammar/SKEMA.g4).
 
 ## Syntax
 
-
+The syntax rules that apply to SKON also applies to SKEMA.
+Every value should end in a comma and a file should be a implicit map.
 
 ### Metadata
 ---
 
 SKEMA uses the same metadata format as SKON, seen [here](./SKON%20v1%20Spec.md#metadata).
 
-This means that SKEMA requires parsing of both SKEMA objects aswell as SKON data. 
-The abillity to parse SKON objects is not only used for metadata in SKEMA, it's also used when parsing [specifiers]().
+This means that SKEMA requires parsing of both SKEMA objects aswell as SKON data.
 
 All metadata should be at the top of a SKEMA file.
 
@@ -73,3 +81,61 @@ This is an example of a valid metadata header for a SKEMA file.
 
 // SKON data...
 ```
+
+### Type
+---
+
+This is the main functionality of SKEMA. These are used to represent the simple data types in SKON.
+
+The valid types are as follows:
+
+- `Any`:
+  Maches any SKON data type.
+- `String`:
+  Maches the String data type.
+- `Integer`:
+  Matches the Integer data type.
+- `Float`:
+  Maches the Float data type.
+- `Boolean`:
+  Maches the boolean data type.
+- `DateTime`:
+  Maches the DateTime data type.
+
+It's worth noting that because Type is a data type it should be followed by a comma.
+
+#### Examples:
+
+- `String,`
+- `DateTime,`
+- `Any,`
+- `Integer,`
+
+### Array
+---
+
+An array is a complex type in SKEMA and describes a SKON array specified to only contain one data type.
+
+This data type is not limited to the simple type [Type](#type) but can also be another array or [Map](#map).
+
+An array is written as a [Type](#type) enclosed in `[ ... ]` brackets.
+
+#### Examples:
+
+- `[ String ],`
+- `[ [ Integer ] ],`
+- `[ { Key: Any, } ],`
+
+### Map
+---
+
+A map is a complex type in SKEMA that describes a SKON map, what keys and type of data those keys should have.
+
+A map is written as Key-Value pairs where the key represents the expected SKON key and the value is a data type.
+
+The data type is not restricted to [Type](#type) and can contain other Map and [Arrays](#arrays) too.
+
+#### Examples
+
+- `{ Key: Any, },`
+- `{ AnotherKey: String, KeyToInt: Integer, },`

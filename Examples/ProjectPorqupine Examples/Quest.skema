@@ -1,30 +1,30 @@
 def Param:
 { 
-    Name: string,
-    Value: any,
+    Name: String,
+    Value: Any,
 },
 
 def Goal:
 {
-    Description: string,
-    IsCompletedLuaFunction: string,
+    Description: String,
+    IsCompletedLuaFunction: String,
     Params: [ #Param ],
 },
 
 def Reward:
 {
-    Description: string,
-    OnRewardLuaFunction: string,
+    Description: String,
+    OnRewardLuaFunction: String,
     Params: [ #Param ],
 },
 
 def Quest:
 {
-    Name: string,
+    Name: String,
 
-    Description: string,
+    Description: String,
 
-    opt PreRequiredCompletedQuests: [ string ],
+    opt PreRequiredCompletedQuests: [ String ],
 
     Goals: [ #Goal ],
 

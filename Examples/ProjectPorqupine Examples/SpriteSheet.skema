@@ -2,12 +2,12 @@
 
 def Sprite
 {
-    Name: string,
-    x: double,
-    y: double,
-    w: double,
-    h: double,
-    optional PixlesPerUnit: int,
+    Name: String,
+    x: Decimal,
+    y: Decimal,
+    w: Decimal,
+    h: Decimal,
+    optional PixlesPerUnit: Integer,
 },
 
 Sprites: [ #Sprite ],

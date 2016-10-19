@@ -2,30 +2,30 @@
 
 def JobInventory:
 {
-    ObjectType: string,
-    Amount: int,
+    ObjectType: String,
+    Amount: Integer,
 },
 
 def BuildingJob:
 {
-    JobTime: double,
+    JobTime: Decimal,
     optional Inventories: [ #JobInventory ],
 },
 
 def Tile:
 {
-    TileType: string,
-    Name: string,
-    Description: string,
-    BaseMovementCost: double,
-    LinksToNeighbours: bool,
+    TileType: String,
+    Name: String,
+    Description: String,
+    BaseMovementCost: Decimal,
+    LinksToNeighbours: Boolean,
 
-    optional CanPlaceHere: [ string ],
+    optional CanPlaceHere: [ String ],
 
     BuildingJob: #BuildingJob,
 
-    LocalizationCode: string,
-    UnlocalizedDescription: string,
+    LocalizationCode: String,
+    UnlocalizedDescription: String,
 },
 
 Tiles: [ #Tile ],

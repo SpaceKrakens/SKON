@@ -20,13 +20,13 @@ It is a simple, concise, easily read and written language to store data in.
 - [Syntax](#syntax)
   - [Metadata](#metadata)
   - [Null](#null)
-  - [String](#string-1)
-  - [Integer](#integer-1)
-  - [Decimal](#decimal-1)
-  - [Boolean](#boolean-1)
-  - [DateTime](#dateTime-1)
-  - [Array](#array-1)
-  - [Map](#map-1)
+  - [String](#string)
+  - [Integer](#integer)
+  - [Float](#float)
+  - [Boolean](#boolean)
+  - [DateTime](#datetime)
+  - [Array](#array)
+  - [Map](#map)
 - [File Format](#file-format)
 
 ## Terminology
@@ -74,9 +74,9 @@ The following is a list of all of the different data types and the some notes re
 
   Integer values **should** be 64-bit.
 
-- #### Decimal
+- #### Float
 
-  Decimal values **should** be 64-bit floating point.
+  Float values **should** be 64-bit floating point.
 
 - #### Boolean
 - #### DateTime
@@ -218,10 +218,10 @@ But they can also be represented in Hexadecimal using the following prefix `0x`.
 - `0xA,`
 - `0x7FFFFFFF,`
 
-### Decimal
+### Float
 ---
 
-Decimal values can be written as two integers separated with a dot.
+Float values can be written as two integers separated with a dot.
 
 #### Examples
 
@@ -335,7 +335,7 @@ The value can be any data type and are written after the `:` of the key.
 {
   KeyToString: "String value",
   KeyToInt: 1,
-  KeyToDecimal: 1.2,
+  KeyToFloat: 1.2,
   KeyToBool: true,
   KeyToDateTime: @2016-10-09,
   KeyToArray: [ "String", 1, 1.2, true, @2016-10-09, ],
@@ -363,7 +363,7 @@ Or preferably write every element as a key-value pair without the surrounding ma
 
 KeyToString: "String value",
 KeyToInt: 1,
-KeyToDecimal: 1.2,
+KeyToFloat: 1.2,
 KeyToBool: true,
 KeyToDateTime: @2016-10-09,
 KeyToArray: [ "String", 1, 1.2, true, @2016-10-09, ],

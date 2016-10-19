@@ -2,10 +2,10 @@
 
 def Item:
 {
-    ObjectType: string,
-    MaxStackSize: int,
-    BasePrice: double,
-    Category: string,
+    ObjectType: String,
+    MaxStackSize: Integer,
+    BasePrice: Decimal,
+    Category: String,
 },
 
 Inventories: [ #Item ],
