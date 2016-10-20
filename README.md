@@ -3,7 +3,7 @@ Space Kraken Object Notation - [https://github.com/SpaceKrakens/SKON](https://gi
 
 Is a language originally created to accommodate the data format language need for [Project Porcupine](https://github.com/TeamPorcupine/ProjectPorcupine).
 
-Its main focus is besting all other object notation languages. No more need for 90% filler in xml or the unreadable `"`s in Json.
+Its main focus is besting all other object notation languages. No more need for 90% filler in xml, the unreadable `"`s in Json or the overly complex superset of JSON; YAML.
 
 It's also notable that it has a schema language, SKEMA! So you don't have to just blindly trust the user. :octopus:
 
