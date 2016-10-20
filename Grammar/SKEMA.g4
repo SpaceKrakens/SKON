@@ -16,7 +16,7 @@ meta
 
 // Any simple value, ie terminals
 simple_value
-    : (STRING_VAL | DATETIME_VAL | INTEGER_VAL | DOUBLE_VAL | TRUE | FALSE)
+    : (STRING_VAL | DATETIME_VAL | INTEGER_VAL | FLOAT_VAL | TRUE | FALSE)
     ;
 
 reference
@@ -24,7 +24,7 @@ reference
     ;
 
 entry
-    : (REQ | OPT) KEY DEFINE (type_def | reference)
+    : OPT? KEY DEFINE (type_def | reference)
     | DEF KEY DEFINE type_def
     ;
 
@@ -32,7 +32,7 @@ entry
 simple_type_def
     : STRING
     | INTEGER 
-    | DOUBLE 
+    | FLOAT 
     | BOOLEAN 
     | DATETIME
     ;
@@ -91,8 +91,8 @@ fragment HEX
    : [0-9a-fA-F]
    ;
 
-// Any Double number
-DOUBLE_VAL
+// Any FLOAT number
+FLOAT_VAL
    : '-'? INT '.' [0-9] + EXP? | '-'? INT EXP | '-'? INT
    ;
 
@@ -111,7 +111,7 @@ fragment INTNOZERO
    : [1-9] [0-9]*
    ;
 
-// Double exponent part
+// FLOAT exponent part
 fragment EXP
    : [Ee] [+\-]? INT
    ;
@@ -144,15 +144,15 @@ SEPARATOR: ',';
 // Key-value separator
 DEFINE: ':';
 
-STRING: 'string';
+STRING: 'String';
 
-DOUBLE: 'double';
+FLOAT: 'Float';
 
-INTEGER: 'int';
+INTEGER: 'Integer';
 
-BOOLEAN: 'bool';
+BOOLEAN: 'Boolean';
 
-DATETIME: 'dateTime';
+DATETIME: 'DateTime';
 
 KEY
     : [a-zA-Z]CHAR*

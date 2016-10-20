@@ -1,0 +1,147 @@
+~Version: 1~
+~SKEMA: "./Quest.skema"~
+
+Quests:
+[
+    { 
+        Name: "Mining Drone Beta Test Program",
+        Description: "Participate in the Beta Program of brand new mining Drones!",
+        Goals:
+        [
+            {
+                Description: "Build 2 Mining Drone Station",
+                IsCompletedLuaFunction: "Quest_Have_Furniture_Built",
+                Params:
+                [
+                    { Name: "type", Value: "Mining Drone Station", },
+                    { Name: "amount", Value: 2, },
+                ],
+            },
+        ],
+
+        Rewards:
+        [
+            {
+                Description: "Receive 50 free Raw Iron",
+                OnRewardLuaFunction: "Quest_Spawn_Inventory",
+                Params:
+                [
+                    { Name: "type", Value: "Raw Iron", },
+                    { Name: "amount", Value: 50, },
+                ],
+            },
+        ],
+    },
+
+    {
+        Name: "Process Raw Iron",
+        Description: "Get ready to produce steel",
+        PreRequiredCompletedQuests:
+        [
+            "Mining Drone Beta Test Program",
+        ],
+
+        Goals:
+        [
+            {
+                Description: "Build 1 Metal Smelter Station",
+                IsCompletedLuaFunction: "Quest_Have_Furniture_Built",
+                Params:
+                [
+                    { Name: "type", Value: "Metal Smelter", },
+                    { Name: "amount", Value: 1, },
+                ],
+            },
+        ],
+
+        Rewards:
+        [
+            { 
+                Description: "Receive 50 free Raw Iron",
+                OnRewardLuaFunction: "Quest_Spawn_Inventory",
+                Params:
+                {
+                    { Name: "type", Value: "Steel Plate", },
+                    { Name: "amount", Value: 15, },
+                },
+            },
+        ],
+    },
+
+    {
+        Name: "Survival basics - Fresh",
+        Description: "Build 2 Oxygen Generator and the power for it",
+        Goals:
+        [
+            {
+                Description: "Build 2 Power Generator",
+                IsCompletedLuaFunction: "Quest_Have_Furniture_Built",
+                Params:
+                [
+                    { Name: "type", Value: "Power Generator", },
+                    { Name: "amount", Value: 2, },
+                ],
+            },
+
+            {
+                Description: "Build 2 Oxygen Generator",
+                IsCompletedLuaFunction: "Quest_Have_Furniture_Built",
+
+                Params:
+                [
+                    { Name: "type", Value: "Oxygen Generator", },
+                    { Name: "amount", Value: 2, },
+                ],
+            },
+        ],
+
+        Rewards:
+        [
+            {
+                Description: "Receive 10 free Power Cell",
+                OnRewardLuaFunction: "Quest_Spawn_Inventory",
+
+                Params:
+                [
+                    { Name: "type", Value: "Raw Iron", },
+                    { Name: "amount", Value: 10, },
+                ],
+            },
+        ],
+    },
+
+    {
+        Name: "Survival basics - Hot Topic",
+        Description: "Build 1 Heater",
+        PreRequiredCompletedQuests:
+        [
+            "Survival basics - Fresh",
+        ],
+
+        Goals:
+        [
+            {
+                Description: "Build 1 Heater",
+                IsCompletedLuaFunction: "Quest_Have_Furniture_Built",
+                Params:
+                [
+                    { Name: "type", Value: "Heater", },
+                    { Name: "amount", Value: 1, },
+                ],
+            },
+        ],
+
+        Rewards:
+        [
+            { 
+                Description: "Receive 10 free Power Cell",
+                OnRewardLuaFunction: "Quest_Spawn_Inventory",
+                Params:
+                [
+                    { Name: "type", Value: "Ice", },
+                    { Name: "amount", Value: 20, },
+                ],
+            },
+        ],
+    },
+],

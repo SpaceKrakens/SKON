@@ -1,0 +1,55 @@
+~Version: 1~
+
+Traders:
+[
+    { 
+        ObjectType: "Wire Inc.",
+
+        
+        PotentialNames: 
+        [
+            "Wire Inc.",
+            "Connectron Corp.",
+        ],
+
+        CurrencyName: "Quill Corp Bucks",
+
+        MinCurrencyBalance: 1000,
+        MaxCurrencyBalance: 5000,
+
+        MinSaleMarginMultiplier: 1.2,
+        MaxSaleMarginMultiplier: 1.5,
+
+        PotentialStock:
+        [
+            { ObjectType: "Steel Plate", Rarity: 0.1, MinQuantity: 100, MaxQuantity: 150, },
+            { ObjectType: "Power Cell", Rarity: 0.3, MinQuantity: 200, MaxQuantity: 300, },
+            { ObjectType: "Copper Wire", Rarity: 0.8, MinQuantity: 20, MaxQuantity: 50, },
+        ],
+    },
+
+    { 
+        ObjectType: "Raw Depot",
+
+        PotentialNames: 
+        [
+            "Raw Depot",
+            "Miners Delight",
+        ],
+
+        CurrencyName: "Inter-Galactic Credits",
+
+        MinCurrencyBalance: 200,
+        MaxCurrencyBalance: 1500,
+
+        MinSaleMarginMultiplier: 1.2,
+        MaxSaleMarginMultiplier: 1.3,
+
+        PotentialStock:
+        [
+            { ObjectType: "Uranium", Rarity: 0.1, MinQuantity: 100, MaxQuantity: 150, },
+            { ObjectType: "Raw Iron", Rarity: 0.3, MinQuantity: 2000, MaxQuantity: 3000, },
+            { ObjectType: "Ice", Rarity: 0.8, MinQuantity: 1000, MaxQuantity: 2500, },
+        ],
+    },
+],

@@ -1,0 +1,13 @@
+~Version: 1~
+
+def Sprite
+{
+    Name: String,
+    X: Float,
+    Y: Float,
+    W: Float,
+    H: Float,
+    optional PixlesPerUnit: Integer,
+},
+
+Sprites: [ #Sprite ],

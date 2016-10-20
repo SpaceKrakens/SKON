@@ -1,0 +1,12 @@
+~Version: 1~
+~SKEMA: "./Inventory.skema"~
+
+Inventories: 
+[
+    { ObjectType: "Raw Iron",    MaxStackSize: 50, BasePrice: 0.8, Category: "inv_cat_raw", },
+    { ObjectType: "Ice",         MaxStackSize: 10, BasePrice: 1.2, Category: "inv_cat_raw", },
+    { ObjectType: "Uranium",     MaxStackSize: 20, BasePrice: 3,   Category: "inv_cat_raw", },
+    { ObjectType: "Steel Plate", MaxStackSize: 50, BasePrice: 1.5, Category: "inv_cat_refined", },
+    { ObjectType: "Power Cell",  MaxStackSize: 5,  BasePrice: 5,   Category: "inv_cat_crafted", },
+    { ObjectType: "Copper Wire", MaxStackSize: 50, BasePrice: 2.7, Category: "inv_cat_crafted", },
+],

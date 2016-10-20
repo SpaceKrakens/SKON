@@ -1,11 +1,13 @@
 # SKON
-Space Kraken Object Notation - https://github.com/SpaceKrakens/SKON
+Space Kraken Object Notation - [https://github.com/SpaceKrakens/SKON](https://github.com/SpaceKrakens/SKON)
 
 Is a language originally created to accommodate the data format language need for [Project Porcupine](https://github.com/TeamPorcupine/ProjectPorcupine).
 
 Its main focus is besting all other object notation languages. No more need for 90% filler in xml or the unreadable `"`s in Json.
 
-It's also notable that it has a schema. So you don't have to just blindly trust the user. :octopus:
+It's also notable that it has a schema language, SKEMA! So you don't have to just blindly trust the user. :octopus:
+
+You can find the SKON Spec [here](./Spec/SKON%20v1%20Spec.md) and the SKEMA Spec [here](./Spec/SKEMA%20v1%20Spec.md).
 
 ## Example
 
@@ -60,9 +62,9 @@ def Color:
     Color: int,
 },
 
-// Defines that an array called Colors needs to exits with greater than zero elements
+// Defines that an array called Colors needs to exits
 // and that the all the elements most conform to the Color definition.
-Colors: [ #Color ] (greater [0]),
+Colors: [ #Color ],
 ```
 
 A quick SKON file that is valid for this SKEMA could look like this:
@@ -123,9 +125,9 @@ The two complex types just enclose data with either braces or brackets.
 
 Arrays are written as data surrounded by brackets with every entry separated by a comma.
 
-An array can contain any data type if not otherwise stated in a SKEMA.
+An array can contain any data type if not otherwise stated in a [SKEMA](./Spec/SKEMA%20v1%20Spec.md).
 
-```
+```c
 [
     "This",
     "is",
@@ -159,7 +161,7 @@ Every file In SKON is a map, so all elements in root has to be a key value pair.
 
 This is what a file containing a string and map would look like:
 
-```
+```c
 Name: "SomeName",
 
 Map: {
@@ -172,30 +174,30 @@ Map: {
 
 There are numerous ways to write date and time in SKON, most of which are based upon [RFC 3339/ISO 8601](https://tools.ietf.org/html/rfc3339#section-5.6). Additionally to this standard, SKON supports UNIX Timestamps.
 
-```
+```c
 DateTimes: 
 [
     @1,                                 // These two values are valid UNIX Timestamps.
     @1473113744,
     
-    2310-12-01,                         // Just the date in the YYYY-MM-DD format.
+    @2310-12-01,                        // Just the date in the YYYY-MM-DD format.
     
-    2310-12-01T13:37:01Z,               // Date and additionally time in the HH:MM:SSZ format.
+    @2310-12-01T13:37:01Z,              // Date and additionally time in the HH:mm:ssZ format.
                                         // Z stands for Zulu and means no difference from UTC.
                                         // Date and time are always separated by a T (for time).
     
-    2310-12-01T13:37:01.02Z,            // Date and additionally time in the HH:MM:SS.SECFRACZ format.
+    @2310-12-01T13:37:01.02Z,           // Date and additionally time in the HH:mm:ss.SECFRACZ format.
                                         // SECFRAC is a fraction of a second. Technically SKON gives
                                         // you no limit but we advise to stay reasonable.
     
-    2310-12-01T13:37:01+09:00,          // To specify a different offset than UTC+0, substitute Z with
+    @2310-12-01T13:37:01+09:00,         // To specify a different offset than UTC+0, substitute Z with
                                         // either +HH:MM or -HH:MM.
     
-    2310-12-01T13:37:01.002+09:00,      // This obviously also works with fractions of seconds.
+    @2310-12-01T13:37:01.002+09:00,     // This obviously also works with fractions of seconds.
     
-    13:37:01Z,                          // You can also write times alone by obmitting the date
-    13:37:01.02Z,                       // part and the date/time separator T.
-    13:37:01+09:00,                     // All four different formats for times are supported.
-    13:37:01.002+09:00,
+    @13:37:01Z,                         // You can also write times alone by obmitting the date
+    @13:37:01.02Z,                      // part and the date/time separator T.
+    @13:37:01+09:00,                    // All four different formats for times are supported.
+    @13:37:01.002+09:00,
 ],
 ```

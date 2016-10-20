@@ -1,0 +1,62 @@
+~Version: 1.0~
+~SKEMA: "./Tiles.skema"~
+
+Tiles:
+[
+    { 
+        TileType: "Empty",
+        Name: "Empty",
+        Description: "This is a empty tile.",
+        BaseMovementCost: 1,
+        LinksToNeighbours: false,
+        
+        BuildingJob:
+        {
+            JobTime: 0,
+        },
+
+        localizationCode: "tile_Empty",
+        unlocalizedDescription: "tile_Empty_desc",
+    },
+
+    { 
+        TileType: "Floor",
+        Name: "Floor",
+        Description: "This is a Floor tile.",
+        BaseMovementCost: 1,
+        LinksToNeighbours: false,
+        
+        BuildingJob:
+        {
+            JobTime: 0.1,
+        },
+
+        LocalizationCode: "tile_Floor",
+        UnlocalizedDescription: "tile_Floor_desc",
+    },
+
+    { 
+        TileType: "Ladder",
+        Name: "Ladder",
+        Description: "This is a Ladder tile.",
+        BaseMovementCost: 1.5,
+        LinksToNeighbours: false,
+        
+        CanPlaceHere:
+        [
+            "CanBuildHere_Ladder",
+        ],
+
+        BuildingJob:
+        {
+            JobTime: 0.5,
+            Inventories:
+            [
+                { ObjectType: "Steel Plate", Amount: 1, },
+            ],
+        },
+
+        LocalizationCode: "tile_Floor",
+        UnlocalizedDescription: "tile_Floor_desc",
+    },
+],

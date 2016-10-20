@@ -38,7 +38,7 @@ array
 
 // Any simple value, ie terminals
 simple_value
-    : (STRING | DATETIME | INTEGER | DOUBLE | TRUE | FALSE)
+    : (STRING | DATETIME | INTEGER | FLOAT | TRUE | FALSE)
     ;
 
 // Any complex value, ie values containing values
@@ -119,15 +119,16 @@ fragment HEX
    : [0-9a-fA-F]
    ;
 
-// Any Double number
-DOUBLE
-   : '-'? INT '.' [0-9] + EXP? | '-'? INT EXP | '-'? INT
-   ;
-
 // Any Integer value
 INTEGER
     : '-'? INT
+    | '0x' HEX+
     ;
+
+// Any Float number
+FLOAT
+   : '-'? INT '.' [0-9]+ EXP? | '-'? INT EXP
+   ;
 
 // A non negative Integer with no leading zeros
 fragment INT
@@ -144,7 +145,7 @@ fragment DIGIT
    : [0-9]
    ;
 
-// Double exponent part
+// Float exponent part
 fragment EXP
    : [Ee] [+\-]? INT
    ;

@@ -1,0 +1,11 @@
+~Version: 1~
+
+def Item:
+{
+    ObjectType: String,
+    MaxStackSize: Integer,
+    BasePrice: Float,
+    Category: String,
+},
+
+Inventories: [ #Item ],

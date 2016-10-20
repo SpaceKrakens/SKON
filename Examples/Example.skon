@@ -27,7 +27,7 @@ ExampleString: "This is a string",
 
 ExampleInteger: 10,
 
-ExampleDouble: 10.4,
+ExampleFloat: 10.4,
 
 ExampleBoolean: true,
 
@@ -63,7 +63,7 @@ MapOfAllDataTypes:
 {
     String: "String type",
     Integer: 1,
-    Double: 0.3, //
+    Float: 0.3, //
     Boolean: true, //The boolean value true
     Datetime: @296613120, //This is a unix timestamp
     Array: [], //This is an empty array, the datatype is not specified.
