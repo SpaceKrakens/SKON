@@ -16,11 +16,11 @@ It's only meant to describe a SKON file and nothing else.
   - [Type](#type)
   - [Array](#array)
   - [Map](#map)
-  - [Optional](#optional)
-  - [Definitions](#definitions)
-  - [References](#references)
-- [Reference solving](#reference-solving)
-- [File Format](#file-format)
+  - [Optional](#optional) - todo
+  - [Definitions](#definitions) - todo
+  - [References](#references) - todo
+- [Reference solving](#reference-solving) - todo
+- [File Format](#file-format) - todo
 
 ## Terminology
 
