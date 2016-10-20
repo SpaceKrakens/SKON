@@ -4,7 +4,7 @@ def Item:
 {
     ObjectType: String,
     MaxStackSize: Integer,
-    BasePrice: Decimal,
+    BasePrice: Float,
     Category: String,
 },
 

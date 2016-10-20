@@ -3,10 +3,10 @@
 def Sprite
 {
     Name: String,
-    x: Decimal,
-    y: Decimal,
-    w: Decimal,
-    h: Decimal,
+    X: Float,
+    Y: Float,
+    W: Float,
+    H: Float,
     optional PixlesPerUnit: Integer,
 },
 

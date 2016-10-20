@@ -8,7 +8,7 @@ def JobInventory:
 
 def BuildingJob:
 {
-    JobTime: Decimal,
+    JobTime: Float,
     optional Inventories: [ #JobInventory ],
 },
 
@@ -17,7 +17,7 @@ def Tile:
     TileType: String,
     Name: String,
     Description: String,
-    BaseMovementCost: Decimal,
+    BaseMovementCost: Float,
     LinksToNeighbours: Boolean,
 
     optional CanPlaceHere: [ String ],

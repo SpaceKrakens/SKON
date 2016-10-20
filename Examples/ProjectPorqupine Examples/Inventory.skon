@@ -3,10 +3,10 @@
 
 Inventories: 
 [
-    { objectType: "Raw Iron",    maxStackSize: 50, basePrice: 0.8, category: "inv_cat_raw", },
-    { objectType: "Ice",         maxStackSize: 10, basePrice: 1.2, category: "inv_cat_raw", },
-    { objectType: "Uranium",     maxStackSize: 20, basePrice: 3,   category: "inv_cat_raw", },
-    { objectType: "Steel Plate", maxStackSize: 50, basePrice: 1.5, category: "inv_cat_refined", },
-    { objectType: "Power Cell",  maxStackSize: 5,  basePrice: 5,   category: "inv_cat_crafted", },
-    { objectType: "Copper Wire", maxStackSize: 50, basePrice: 2.7, category: "inv_cat_crafted", },
+    { ObjectType: "Raw Iron",    MaxStackSize: 50, BasePrice: 0.8, Category: "inv_cat_raw", },
+    { ObjectType: "Ice",         MaxStackSize: 10, BasePrice: 1.2, Category: "inv_cat_raw", },
+    { ObjectType: "Uranium",     MaxStackSize: 20, BasePrice: 3,   Category: "inv_cat_raw", },
+    { ObjectType: "Steel Plate", MaxStackSize: 50, BasePrice: 1.5, Category: "inv_cat_refined", },
+    { ObjectType: "Power Cell",  MaxStackSize: 5,  BasePrice: 5,   Category: "inv_cat_crafted", },
+    { ObjectType: "Copper Wire", MaxStackSize: 50, BasePrice: 2.7, Category: "inv_cat_crafted", },
 ],

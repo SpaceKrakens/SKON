@@ -4,15 +4,15 @@
 Tiles:
 [
     { 
-        tileType: "Empty",
-        name: "Empty",
-        description: "This is a empty tile.",
-        baseMovementCost: 1,
-        linksToNeighbours: false,
+        TileType: "Empty",
+        Name: "Empty",
+        Description: "This is a empty tile.",
+        BaseMovementCost: 1,
+        LinksToNeighbours: false,
         
-        buildingJob:
+        BuildingJob:
         {
-            jobTime: 0,
+            JobTime: 0,
         },
 
         localizationCode: "tile_Empty",
@@ -20,43 +20,43 @@ Tiles:
     },
 
     { 
-        tileType: "Floor",
-        name: "Floor",
-        description: "This is a Floor tile.",
-        baseMovementCost: 1,
-        linksToNeighbours: false,
+        TileType: "Floor",
+        Name: "Floor",
+        Description: "This is a Floor tile.",
+        BaseMovementCost: 1,
+        LinksToNeighbours: false,
         
-        buildingJob:
+        BuildingJob:
         {
-            jobTime: 0.1,
+            JobTime: 0.1,
         },
 
-        localizationCode: "tile_Floor",
-        unlocalizedDescription: "tile_Floor_desc",
+        LocalizationCode: "tile_Floor",
+        UnlocalizedDescription: "tile_Floor_desc",
     },
 
     { 
-        tileType: "Ladder",
-        name: "Ladder",
-        description: "This is a Ladder tile.",
-        baseMovementCost: 1.5,
-        linksToNeighbours: false,
+        TileType: "Ladder",
+        Name: "Ladder",
+        Description: "This is a Ladder tile.",
+        BaseMovementCost: 1.5,
+        LinksToNeighbours: false,
         
         CanPlaceHere:
         [
             "CanBuildHere_Ladder",
         ],
 
-        buildingJob:
+        BuildingJob:
         {
-            jobTime: 0.5,
-            inventories:
+            JobTime: 0.5,
+            Inventories:
             [
-                { objectType: "Steel Plate", amount: 1, },
+                { ObjectType: "Steel Plate", Amount: 1, },
             ],
         },
 
-        localizationCode: "tile_Floor",
-        unlocalizedDescription: "tile_Floor_desc",
+        LocalizationCode: "tile_Floor",
+        UnlocalizedDescription: "tile_Floor_desc",
     },
 ],

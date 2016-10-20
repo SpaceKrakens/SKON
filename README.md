@@ -1,11 +1,13 @@
 # SKON
-Space Kraken Object Notation - https://github.com/SpaceKrakens/SKON
+Space Kraken Object Notation - [https://github.com/SpaceKrakens/SKON](https://github.com/SpaceKrakens/SKON)
 
 Is a language originally created to accommodate the data format language need for [Project Porcupine](https://github.com/TeamPorcupine/ProjectPorcupine).
 
 Its main focus is besting all other object notation languages. No more need for 90% filler in xml or the unreadable `"`s in Json.
 
-It's also notable that it has a schema. So you don't have to just blindly trust the user. :octopus:
+It's also notable that it has a schema language, SKEMA! So you don't have to just blindly trust the user. :octopus:
+
+You can find the SKON Spec [here](./Spec/SKON%20v1%20Spec.md) and the SKEMA Spec [here](./Spec/SKEMA%20v1%20Spec.md).
 
 ## Example
 
@@ -60,9 +62,9 @@ def Color:
     Color: int,
 },
 
-// Defines that an array called Colors needs to exits with greater than zero elements
+// Defines that an array called Colors needs to exits
 // and that the all the elements most conform to the Color definition.
-Colors: [ #Color ] (greater [0]),
+Colors: [ #Color ],
 ```
 
 A quick SKON file that is valid for this SKEMA could look like this:
@@ -123,7 +125,7 @@ The two complex types just enclose data with either braces or brackets.
 
 Arrays are written as data surrounded by brackets with every entry separated by a comma.
 
-An array can contain any data type if not otherwise stated in a SKEMA.
+An array can contain any data type if not otherwise stated in a [SKEMA](./Spec/SKEMA%20v1%20Spec.md).
 
 ```c
 [
