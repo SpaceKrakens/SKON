@@ -109,9 +109,9 @@ Every SKON file **should** be considered an implicit map without the surrounding
 ### Comments
 ---
 
-SKON supports two types of comments. Slingle line comments using `//` and multi line comments using `/* comment */` syntax.
+SKON supports two types of comments. Single line comments using `//` and multi line comments using `/* comment */` syntax.
 
-Single line `//` comments end at a newline, while multi-line `/* ... */` comments end at the first `*/` (This means that there are no nested comments).
+Single line `//` comments end at a newline, while multi-line `/* ... */` comments end at the first `*/`. Nested comments are therefore not supported.
 
 #### Examples
 
@@ -144,7 +144,7 @@ These are as follows:
 
 A `Version` metadata directive is required at the top of every file.
 
-Then if the parser supports SKEMA it **should** support the `SKEMA` directive which is followed by a string that locates the SKEMA file.
+If the parser supports SKEMA it **should** support the `SKEMA` directive which is followed by a string that locates the SKEMA file.
 
 A parser **could** support custom metadata, but to keep compatability it **should** not force these to be present.
 
@@ -177,7 +177,7 @@ A null value in SKON is simply written as `null` all lower case.
 ### String
 ---
 
-String values are double quoted. Unicode characters and other control character can be escaped with a `\`.
+String values are double quoted. Unicode characters and other control characters can be escaped with a `\`.
 The escapable control characters are:
 
 - `b` - Backspace
@@ -210,7 +210,7 @@ Integers are written as a normal integer number with no spaces
 - `10,`
 - `-2147483648,`
 
-But they can also be represented in Hexadecimal using the following prefix `0x`.
+But they can also be represented in Hexadecimal using the prefix `0x`.
 
 #### Examples
 
@@ -221,7 +221,7 @@ But they can also be represented in Hexadecimal using the following prefix `0x`.
 ### Float
 ---
 
-Float values can be written as two integers separated with a dot.
+Float values can be written as two integers separated by a dot.
 
 #### Examples
 
@@ -258,9 +258,9 @@ Booleans in SKON are written as either `true` or `false` in only lower case.
 
 There are numerous ways to write date and time in SKON, most of which are based upon [RFC 3339/ISO 8601](https://tools.ietf.org/html/rfc3339#section-5.6). Additionally to this standard, SKON supports UNIX Timestamps.
 
-All DateTimes are prefixed with a `@`.
+All DateTimes are prefixed with an `@` character.
 
-A unix timestamp is written as any signed 64-bit number.
+A unix timestamp is written as any signed 64-bit integer.
 
 That means that `@-9223372036854775808,` is the smallest unix timestamp and `@9223372036854775807,` is the biggest possible timestamp.
 
@@ -327,7 +327,7 @@ Keys are written as any letter `A-Za-z_` followed by any number of the following
 - `./spec/SKON v1 Spec.md:`
 - `S p a c e s: `
 
-The value can be any data type and are written after the `:` of the key.
+The values can be any data type and are written after the `:` of the key.
 
 #### Example
 
