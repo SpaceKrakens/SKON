@@ -85,8 +85,6 @@ The following is a list of all of the different data types and the some notes re
   
   DateTimes that only specify time of day **should** assume "today" as the date.
   
-
-
 ### Complex
 
 - #### Array
@@ -98,6 +96,8 @@ The following is a list of all of the different data types and the some notes re
 - #### Map
 
   Like with arrays the number of key-value pairs **should** not be limited in any way, but when writing SKON it is recommended to keep the number of elements reasonable.
+
+  If there are multiple key-value pairs with the same key the earlier values are overwritten.
 
 ## Syntax
 

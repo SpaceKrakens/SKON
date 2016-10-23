@@ -16,11 +16,11 @@ It's only meant to describe a SKON file and nothing else.
   - [Type](#type)
   - [Array](#array)
   - [Map](#map)
-  - [Optional](#optional) - todo
-  - [Definitions](#definitions) - todo
-  - [References](#references) - todo
-- [Reference solving](#reference-solving) - todo
-- [File Format](#file-format) - todo
+  - [Optional](#optional)
+  - [Definitions](#definitions)
+  - [References](#references)
+- [Reference solving](#reference-solving)
+- [File Format](#file-format)
 
 ## Terminology
 
@@ -34,7 +34,7 @@ This section contains definitions for a few words that will be used in the docum
 
 ## Encoding
 
-SKEMA is written in `UTF-8` and that is the only encoding a parser **needs** to support. A parser **could** support other encodings but should not be expected to.
+SKEMA is written in `UTF-8` and that is the only encoding a parser **needs** to support. A parser **could** support other encodings but is not be expected to.
 
 ## Grammar
 
@@ -48,7 +48,7 @@ The official grammar can be found [here](../Grammar/SKEMA.g4).
 ## Syntax
 
 The syntax rules that apply to SKON also applies to SKEMA.
-Every value should end in a comma and a file should be a implicit map.
+Every value **needs** end in a comma and a file **should** be a implicit map.
 
 ### Metadata
 ---
@@ -57,7 +57,7 @@ SKEMA uses the same metadata format as SKON, seen [here](./SKON%20v1%20Spec.md#m
 
 This means that SKEMA requires parsing of both SKEMA objects aswell as SKON data.
 
-All metadata should be at the top of a SKEMA file.
+All metadata **should** be at the top of a SKEMA file.
 
 Metadata entries are surrounded by `~` chracters on both sides and contain a key-value pair.
 
@@ -139,3 +139,88 @@ The data type is not restricted to [Type](#type) and can contain other Map and [
 
 - `{ Key: Any, },`
 - `{ AnotherKey: String, KeyToInt: Integer, },`
+
+### Optional
+---
+
+An element of a Map can be defined to be optional by writing 'optional' before the key.
+
+#### Example
+
+```scala
+// This element is optional
+optional Key: String,
+// while this element is required
+AnotherKey: Integer,
+```
+
+### Definitions
+---
+
+A definition is used to store and reuse common data structures in multiple places.
+
+To define a data structure you just need to write `def` before a key in a Map.
+
+If there are multiple definitions for the same name the earlier definitions are overwritten.
+
+Any data type can be defined.
+
+#### Examples
+
+- `def StringDef: String,`
+- `def ArrayDef: [ Integer ],`
+
+```scala
+def MapDef:
+{
+  def AnotherDef: [ Integer ],
+  Key: Float,
+},
+```
+
+### References
+---
+
+References are used to refer to and use definitions.
+
+A reference is written as a `#` followed by the name of the defined data structure.
+
+#### Example
+
+```scala
+def Person:
+{
+  FirstName: String,
+  LastName: String,
+  optional Nickname: String,
+},
+
+People: [ #Person ],
+```
+
+## Reference solving
+
+A parser **should** support definitions and references.
+
+The references **should** be solved after the whole document has been parsed,
+ by first making sure there are no [strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component) and then substituting all references with their matching definition.
+
+When detecting strongly connected components `optional` elements should not be traversed.
+
+If there are any strongly connected components the SKEMA has recursing definitions and cannot be resolved!
+
+This way of resolving references allows for semi-recursive SKEMAs to be constructed like the following:
+
+```scala
+def Node: 
+{
+  Value: Any,
+  opt Nodes: [ #Node ]
+},
+
+Tree: #Node
+```
+
+## File format
+
+The filename extension for SKEMA is `.skema`.
