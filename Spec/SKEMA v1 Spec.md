@@ -1,6 +1,6 @@
 # SKEMA
 
-SKEMA (sensational spelling for schema) is the schema language for [SKON](./SKON-v1-Spec.md). 
+SKEMA (sensational spelling for schema) is the schema language for [SKON](./SKON%20v1%20Spec.md). 
 
 It's meant to be a fully featured schema language for SKON while still conforming to the fundamental ideas behind SKON, simple, concise, easily read and written language.
 
