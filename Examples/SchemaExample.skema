@@ -4,11 +4,11 @@
 /* Multilines too */
 
 // These are the basic SKEMA types.
-String: String,
-Integer: Integer,
-Float: Float,
-Boolean: Boolean,
-DateTime: DateTime,
+StringKey: String,
+IntegerKey: Integer,
+FloatKey: Float,
+BooleanKey: Boolean,
+DateTimeKey: DateTime,
 
 // Here we define the map value Person, this definition can be used in a lot of different places.
 def Person:
@@ -16,12 +16,12 @@ def Person:
     FirstName: String,
     LastName: String,
     EMail: String,
-}
+},
 
 // You can define a lot of different things!
 def ArrayOfMaps: [ { Key: String, } ],
 
-def String: String,
+def StringKey: String,
 
 // Every element is implicitly required if not otherwise stated.
 Map: 
