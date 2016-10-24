@@ -24,7 +24,7 @@ def Quest:
 
     Description: String,
 
-    opt PreRequiredCompletedQuests: [ String ],
+    optional PreRequiredCompletedQuests: [ String ],
 
     Goals: [ #Goal ],
 

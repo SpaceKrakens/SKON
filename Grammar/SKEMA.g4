@@ -19,18 +19,16 @@ simple_value
     : (STRING_VAL | DATETIME_VAL | INTEGER_VAL | FLOAT_VAL | TRUE | FALSE)
     ;
 
-reference
-    : REF KEY
-    ;
-
 entry
-    : OPT? KEY DEFINE (type_def | reference)
-    | DEF KEY DEFINE type_def
+    : OPT? 
+    (KEY DEFINE (type_def | REF)
+    | DEF KEY DEFINE type_def)
     ;
 
 // Any simple value, ie terminals
 simple_type_def
-    : STRING
+    : ANY
+    | STRING
     | INTEGER 
     | FLOAT 
     | BOOLEAN 
@@ -48,7 +46,7 @@ map
     ;
 
 array
-    : OPEN_ARRAY type_def? CLOSE_ARRAY
+    : OPEN_ARRAY (type_def | REF) CLOSE_ARRAY
     ;
 
 // Any value
@@ -61,11 +59,11 @@ type_def
 TRUE: 'true';
 FALSE: 'false';
 
-REF: '#';
+REF: '#'[a-zA-Z]CHAR*;
 
 DEF: 'def';
 REQ: 'req';
-OPT: 'opt';
+OPT: 'optional';
 
 METADELIMIT
     : '~'
@@ -143,6 +141,8 @@ SEPARATOR: ',';
 
 // Key-value separator
 DEFINE: ':';
+
+ANY: 'Any';
 
 STRING: 'String';
 
