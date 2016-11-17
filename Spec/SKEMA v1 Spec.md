@@ -161,6 +161,9 @@ A definition is used to store and reuse common data structures in multiple place
 
 To define a data structure you just need to write `def` before a key in a Map.
 
+The definition is not considered a part of the SKEMA and should be stored separate for reference solving when the SKEMA has been parsed.
+This is illustrated in the example below the definition of `MapDef` would not contain a key to `AnotherDef`.
+
 If there are multiple definitions for the same name the earlier definitions are overwritten.
 
 Any data type can be defined.
@@ -203,7 +206,10 @@ People: [ #Person ],
 A parser **should** support definitions and references.
 
 The references **should** be solved after the whole document has been parsed,
- by first making sure there are no [strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component) and then substituting all references with their matching definition.
+ by first making sure there are no [strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component) in the definition graph and then substituting all references with their matching definition.
+
+Traversing the graph is done by finding a reference string and finding a maching definition. 
+This works because definitios are stored separate from the rest of the SKEMA and decause there are no nested definitions.
 
 When detecting strongly connected components `optional` elements should not be traversed.
 
@@ -215,7 +221,7 @@ This way of resolving references allows for semi-recursive SKEMAs to be construc
 def Node: 
 {
   Value: Any,
-  opt Nodes: [ #Node ]
+  optional Nodes: [ #Node ]
 },
 
 Tree: #Node
