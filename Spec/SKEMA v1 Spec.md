@@ -221,10 +221,10 @@ This way of resolving references allows for semi-recursive SKEMAs to be construc
 def Node: 
 {
   Value: Any,
-  optional Nodes: [ #Node ]
+  optional Nodes: [ #Node ],
 },
 
-Tree: #Node
+Tree: #Node,
 ```
 
 ## File format

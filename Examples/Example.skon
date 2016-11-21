@@ -54,7 +54,7 @@ ArrayOfMaps:
         Key: "AnotherValue",
     },
     {
-        AnotherKey: "YetAnotherValue",
+        Key: "YetAnotherValue",
     },
 ],
 
