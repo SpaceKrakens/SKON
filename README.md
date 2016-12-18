@@ -107,7 +107,7 @@ The following is a list of the eight types in their respective category.
 
 In SKON most simple data is represented in plain text with no additional syntax.
 
-The exceptions to this is Strings, witch are quoted and DateTimes wich start with an `@`.
+The exceptions to this is Strings, which are quoted and DateTimes wich start with an `@`.
 
 Here are a few examples:
 
