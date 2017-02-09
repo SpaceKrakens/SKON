@@ -3,7 +3,7 @@
 SKEMA (sensational spelling for schema) is the schema language for [SKON](./SKON%20v1%20Spec.md). 
 
 SKEMA aims to be the best schema language to back SKON up.
-It's focus should be to complement SKON in the best way possible while still retaining some SKONs simplicity.
+Its focus should be to complement SKON in the best way possible while still retaining most of SKONs simplicity.
 
 It's only meant to describe a SKON file and nothing else.
 
@@ -58,11 +58,11 @@ SKEMA uses the same metadata format as SKON, seen [here](./SKON%20v1%20Spec.md#m
 
 This means that SKEMA requires parsing of both SKEMA objects aswell as SKON data.
 
-All metadata **should** be at the top of a SKEMA file.
+All metadata **needs** to be at the top of a SKEMA file.
 
 Metadata entries are surrounded by `~` chracters on both sides and contain a key-value pair.
 
-There are two metadata directives that are always madatory.
+There are two metadata directives that are always mandatory.
 Those are as follows:
 
 - `Version` which is followed by an integer. This is the SKEMA language version.
@@ -210,7 +210,7 @@ The references **should** be solved after the whole document has been parsed,
 
 If there are any strongly connected components the SKEMA has recursing definitions and cannot be resolved!
 
-When defining a strongly connected component `optional` elements should not be considered edges, this allows for semi-reqursive SKEMAs to be written like this:
+When defining a strongly connected component `optional` elements should not be considered edges, this allows for semi-recursive SKEMAs to be written like this:
 
 ```scala
 define Node: 
