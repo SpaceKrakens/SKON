@@ -168,12 +168,12 @@ A null value in SKON is simply written as `null` all lower case.
 
 #### Example
 
-- `null`
+- `null,`
 
 ##### NOT VALID
 
-- `NULL`
-- `Null`
+- `NULL,`
+- `Null,`
 
 ### String
 ---
