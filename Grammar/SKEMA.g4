@@ -11,7 +11,7 @@ skema
     ;
 
 meta
-    : METADELIMIT KEY DEFINE simple_value METADELIMIT
+    : METADELIMIT KEY COLON simple_value METADELIMIT
     ;
 
 // Any simple value, ie terminals
@@ -20,9 +20,8 @@ simple_value
     ;
 
 entry
-    : OPT? 
-    (KEY DEFINE (type_def | REF)
-    | DEF KEY DEFINE type_def)
+    :(OPT? KEY COLON (type_def | REF)
+    | DEF KEY COLON type_def)
     ;
 
 // Any simple value, ie terminals
@@ -140,7 +139,7 @@ CLOSE_ARRAY: ']';
 SEPARATOR: ',';
 
 // Key-value separator
-DEFINE: ':';
+COLON: ':';
 
 ANY: 'Any';
 
