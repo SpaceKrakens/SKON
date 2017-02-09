@@ -2,7 +2,7 @@
 
 SKEMA (sensational spelling for schema) is the schema language for [SKON](./SKON%20v1%20Spec.md). 
 
-It's meant to be a fully featured schema language for SKON while still conforming to the fundamental ideas behind SKON, simple, concise, easily read and written language.
+It's meant to be a fully featured schema language for SKON while still conforming to the fundamental ideas behind SKON, a simple, concise, easily read and written language.
 
 It's only meant to describe a SKON file and nothing else.
 
@@ -48,7 +48,7 @@ The official grammar can be found [here](../Grammar/SKEMA.g4).
 ## Syntax
 
 The syntax rules that apply to SKON also applies to SKEMA.
-Every value **needs** end in a comma and a file **should** be a implicit map.
+Every value **needs** an ending comma and a file **should** be a implicit map.
 
 ### Metadata
 ---
@@ -65,7 +65,7 @@ There are two metadata directives a parser **needs** to support.
 These are as follows:
 
 - `Version` which is followed by an integer. This is the SKEMA language version.
-- `DocumentVersion` which is followed by any datatype. This is used in applictaion to filter versions of a file.
+- `DocumentVersion` which is followed by any datatype. This is used in applications to filter versions of a file.
 
 A `Version` metadata directive is required at the top of every file.
 
@@ -90,17 +90,17 @@ This is the main functionality of SKEMA. These are used to represent the simple 
 The valid types are as follows:
 
 - `Any`:
-  Maches any SKON data type.
+  Matches any SKON data type.
 - `String`:
-  Maches the String data type.
+  Matches the String data type.
 - `Integer`:
   Matches the Integer data type.
 - `Float`:
-  Maches the Float data type.
+  Matches the Float data type.
 - `Boolean`:
-  Maches the boolean data type.
+  Matches the boolean data type.
 - `DateTime`:
-  Maches the DateTime data type.
+  Matches the DateTime data type.
 
 It's worth noting that because Type is a data type it should be followed by a comma.
 
@@ -133,7 +133,7 @@ A map is a complex type in SKEMA that describes a SKON map, what keys and type o
 
 A map is written as Key-Value pairs where the key represents the expected SKON key and the value is a data type.
 
-The data type is not restricted to [Type](#type) and can contain other Map and [Arrays](#arrays) too.
+The data type is not restricted to [Type](#type) and can contain other Maps and [Arrays](#arrays) too.
 
 #### Examples
 
@@ -162,9 +162,9 @@ A definition is used to store and reuse common data structures in multiple place
 To define a data structure you just need to write `def` before a key in a Map.
 
 The definition is not considered a part of the SKEMA and should be stored separate for reference solving when the SKEMA has been parsed.
-This is illustrated in the example below the definition of `MapDef` would not contain a key to `AnotherDef`.
+This is illustrated in the example below: the definition of `MapDef` would not contain a key to `AnotherDef`.
 
-If there are multiple definitions for the same name the earlier definitions are overwritten.
+If there are multiple definitions for the same name the earlier definitions are overwritten. A parser **should** parse the SKEMA definitions from top to bottom, but it is not required to do so. Therefore, overwriting definitions requires caution, as different parsers could result in differing definitions for the same SKEMA file.
 
 Any data type can be defined.
 
@@ -208,8 +208,8 @@ A parser **should** support definitions and references.
 The references **should** be solved after the whole document has been parsed,
  by first making sure there are no [strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component) in the definition graph and then substituting all references with their matching definition.
 
-Traversing the graph is done by finding a reference string and finding a maching definition. 
-This works because definitios are stored separate from the rest of the SKEMA and decause there are no nested definitions.
+Traversing the graph is done by finding a reference string and finding a matching definition. 
+This works because definitions are stored separate from the rest of the SKEMA and decause there are no nested definitions.
 
 When detecting strongly connected components `optional` elements should not be traversed.
 
