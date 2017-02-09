@@ -5,8 +5,8 @@ This is the specification for language version 1 of SKON.
 SKON, short for *Space Kraken Object Notation* is a data serialization language designed to be easy to understand and write. 
 It works well for everything where JSON is normally used to and where XML is normally misused.
 
-SKON is meant to store data. It's not a markup language nor is it a clunky subset of a bigger language. Neither is it an overly complex superset of that subset. 
-It is a simple, concise, easily read and written language to store data in.
+SKON aims to be minimal in it's functionality but very versatile in usage.
+It's focus should be narrow; creating a concise and easy data storage language that does not contain any bloat.
 
 ## Table of contents
 
