@@ -13,7 +13,7 @@ It is a simple, concise, easily read and written language to store data in.
 - [Terminology](#terminology)
 - [Encoding](#encoding) 
 - [Grammar](#grammar) 
-- [SKEMA](#SKEMA)
+- [SKEMA](#skema)
 - [Data Types](#data-types) 
   - [Simple Data Types](#simple)
   - [Complex Data Types](#complex)
