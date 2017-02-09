@@ -11,18 +11,17 @@ skema
     ;
 
 meta
-    : METADELIMIT KEY DEFINE simple_value METADELIMIT
+    : METADELIMIT KEY COLON simple_value METADELIMIT
     ;
 
 // Any simple value, ie terminals
 simple_value
-    : (STRING_VAL | DATETIME_VAL | INTEGER_VAL | FLOAT_VAL | TRUE | FALSE)
+    : (STRING_VAL | DATETIME_VAL | INTEGER_VAL | FLOAT_VAL | TRUE | FALSE | NULL)
     ;
 
 entry
-    : OPT? 
-    (KEY DEFINE (type_def | REF)
-    | DEF KEY DEFINE type_def)
+    :(OPT? KEY COLON (type_def | REF)
+    | DEF KEY COLON type_def)
     ;
 
 // Any simple value, ie terminals
@@ -58,11 +57,11 @@ type_def
 // True and false is here to get mached before KEY
 TRUE: 'true';
 FALSE: 'false';
+NULL: 'null';
 
 REF: '#'[a-zA-Z]CHAR*;
 
-DEF: 'def';
-REQ: 'req';
+DEF: 'define';
 OPT: 'optional';
 
 METADELIMIT
@@ -140,7 +139,7 @@ CLOSE_ARRAY: ']';
 SEPARATOR: ',';
 
 // Key-value separator
-DEFINE: ':';
+COLON: ':';
 
 ANY: 'Any';
 

@@ -1,6 +1,6 @@
 ~Version: 1~
 
-def Sprite:
+define Sprite:
 {
     Name: String,
     X: Float,
