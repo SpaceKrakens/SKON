@@ -16,7 +16,7 @@ meta
 
 // Any simple value, ie terminals
 simple_value
-    : (STRING_VAL | DATETIME_VAL | INTEGER_VAL | FLOAT_VAL | TRUE | FALSE)
+    : (STRING_VAL | DATETIME_VAL | INTEGER_VAL | FLOAT_VAL | TRUE | FALSE | NULL)
     ;
 
 entry
@@ -57,6 +57,7 @@ type_def
 // True and false is here to get mached before KEY
 TRUE: 'true';
 FALSE: 'false';
+NULL: 'null';
 
 REF: '#'[a-zA-Z]CHAR*;
 
