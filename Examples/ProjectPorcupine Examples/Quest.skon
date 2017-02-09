@@ -60,10 +60,10 @@ Quests:
                 Description: "Receive 50 free Raw Iron",
                 OnRewardLuaFunction: "Quest_Spawn_Inventory",
                 Params:
-                {
+                [
                     { Name: "type", Value: "Steel Plate", },
                     { Name: "amount", Value: 15, },
-                },
+                ],
             },
         ],
     },
