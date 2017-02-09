@@ -1,6 +1,6 @@
 ~Version: 1~
 
-def Item:
+define Item:
 {
     ObjectType: String,
     MaxStackSize: Integer,

@@ -1,18 +1,18 @@
 ~Version: 1.0~
 
-def JobInventory:
+define JobInventory:
 {
     ObjectType: String,
     Amount: Integer,
 },
 
-def BuildingJob:
+define BuildingJob:
 {
     JobTime: Float,
     optional Inventories: [ #JobInventory ],
 },
 
-def Tile:
+define Tile:
 {
     TileType: String,
     Name: String,

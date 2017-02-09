@@ -1,24 +1,26 @@
-def Param:
+~Version: 1~
+
+define Param:
 { 
     Name: String,
     Value: Any,
 },
 
-def Goal:
+define Goal:
 {
     Description: String,
     IsCompletedLuaFunction: String,
     Params: [ #Param ],
 },
 
-def Reward:
+define Reward:
 {
     Description: String,
     OnRewardLuaFunction: String,
     Params: [ #Param ],
 },
 
-def Quest:
+define Quest:
 {
     Name: String,
 

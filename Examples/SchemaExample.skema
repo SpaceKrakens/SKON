@@ -1,6 +1,6 @@
 ~Version: 1~
 
-// Schemas also have comments
+// Schemas can have comments!
 /* Multilines too */
 
 // These are the basic SKEMA types.

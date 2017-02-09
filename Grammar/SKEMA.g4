@@ -61,8 +61,7 @@ NULL: 'null';
 
 REF: '#'[a-zA-Z]CHAR*;
 
-DEF: 'def';
-REQ: 'req';
+DEF: 'define';
 OPT: 'optional';
 
 METADELIMIT
