@@ -2,7 +2,8 @@
 
 SKEMA (sensational spelling for schema) is the schema language for [SKON](./SKON%20v1%20Spec.md). 
 
-It's meant to be a fully featured schema language for SKON while still conforming to the fundamental ideas behind SKON, a simple, concise, easily read and written language.
+SKEMA aims to be the best schema language to back SKON up.
+It's focus should be to complement SKON in the best way possible while still retaining some SKONs simplicity.
 
 It's only meant to describe a SKON file and nothing else.
 
@@ -61,13 +62,11 @@ All metadata **should** be at the top of a SKEMA file.
 
 Metadata entries are surrounded by `~` chracters on both sides and contain a key-value pair.
 
-There are two metadata directives a parser **needs** to support. 
-These are as follows:
+There are two metadata directives that are always madatory.
+Those are as follows:
 
 - `Version` which is followed by an integer. This is the SKEMA language version.
-- `DocumentVersion` which is followed by any datatype. This is used in applications to filter versions of a file.
-
-A `Version` metadata directive is required at the top of every file.
+- `DocumentVersion` which is followed by a string. This is used in applications to filter versions of a file.
 
 A parser **could** support custom metadata, but to keep compatability it **should** not force these to be present.
 
@@ -159,24 +158,25 @@ AnotherKey: Integer,
 
 A definition is used to store and reuse common data structures in multiple places.
 
-To define a data structure you just need to write `def` before a key in a Map.
+To define a data structure you just need to write `define` before a key in a Map.
 
 The definition is not considered a part of the SKEMA and should be stored separate for reference solving when the SKEMA has been parsed.
-This is illustrated in the example below: the definition of `MapDef` would not contain a key to `AnotherDef`.
+This is illustrated in the example below: the definition of `MapDef` would not contain a key to `AnotherDef`. 
+Additionally defitions are always in file scope so the `AnotherDef` definition would be usable anywhere in the file.
 
-If there are multiple definitions for the same name the earlier definitions are overwritten. A parser **should** parse the SKEMA definitions from top to bottom, but it is not required to do so. Therefore, overwriting definitions requires caution, as different parsers could result in differing definitions for the same SKEMA file.
+If there are multiple definitions for the same name the last definition from top to bottom is used.
 
 Any data type can be defined.
 
 #### Examples
 
-- `def StringDef: String,`
-- `def ArrayDef: [ Integer ],`
+- `define StringDef: String,`
+- `define ArrayDef: [ Integer ],`
 
 ```scala
-def MapDef:
+define MapDef:
 {
-  def AnotherDef: [ Integer ],
+  define AnotherDef: [ Integer ],
   Key: Float,
 },
 ```
@@ -191,7 +191,7 @@ A reference is written as a `#` followed by the name of the defined data structu
 #### Example
 
 ```scala
-def Person:
+define Person:
 {
   FirstName: String,
   LastName: String,
@@ -208,17 +208,12 @@ A parser **should** support definitions and references.
 The references **should** be solved after the whole document has been parsed,
  by first making sure there are no [strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component) in the definition graph and then substituting all references with their matching definition.
 
-Traversing the graph is done by finding a reference string and finding a matching definition. 
-This works because definitions are stored separate from the rest of the SKEMA and decause there are no nested definitions.
-
-When detecting strongly connected components `optional` elements should not be traversed.
-
 If there are any strongly connected components the SKEMA has recursing definitions and cannot be resolved!
 
-This way of resolving references allows for semi-recursive SKEMAs to be constructed like the following:
+When defining a strongly connected component `optional` elements should not be considered edges, this allows for semi-reqursive SKEMAs to be written like this:
 
 ```scala
-def Node: 
+define Node: 
 {
   Value: Any,
   optional Nodes: [ #Node ],
