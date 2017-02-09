@@ -2,7 +2,8 @@
 
 SKEMA (sensational spelling for schema) is the schema language for [SKON](./SKON%20v1%20Spec.md). 
 
-It's meant to be a fully featured schema language for SKON while still conforming to the fundamental ideas behind SKON, simple, concise, easily read and written language.
+SKEMA aims to be the best schema language to back SKON up.
+It's focus should be to complement SKON in the best way possible while still retaining some SKONs simplicity.
 
 It's only meant to describe a SKON file and nothing else.
 
@@ -48,7 +49,7 @@ The official grammar can be found [here](../Grammar/SKEMA.g4).
 ## Syntax
 
 The syntax rules that apply to SKON also applies to SKEMA.
-Every value **needs** end in a comma and a file **should** be a implicit map.
+Every value **needs** an ending comma and a file **should** be a implicit map.
 
 ### Metadata
 ---
@@ -61,13 +62,11 @@ All metadata **should** be at the top of a SKEMA file.
 
 Metadata entries are surrounded by `~` chracters on both sides and contain a key-value pair.
 
-There are two metadata directives a parser **needs** to support. 
-These are as follows:
+There are two metadata directives that are always madatory.
+Those are as follows:
 
 - `Version` which is followed by an integer. This is the SKEMA language version.
-- `DocumentVersion` which is followed by any datatype. This is used in applictaion to filter versions of a file.
-
-A `Version` metadata directive is required at the top of every file.
+- `DocumentVersion` which is followed by a string. This is used in applications to filter versions of a file.
 
 A parser **could** support custom metadata, but to keep compatability it **should** not force these to be present.
 
@@ -90,17 +89,17 @@ This is the main functionality of SKEMA. These are used to represent the simple 
 The valid types are as follows:
 
 - `Any`:
-  Maches any SKON data type.
+  Matches any SKON data type.
 - `String`:
-  Maches the String data type.
+  Matches the String data type.
 - `Integer`:
   Matches the Integer data type.
 - `Float`:
-  Maches the Float data type.
+  Matches the Float data type.
 - `Boolean`:
-  Maches the boolean data type.
+  Matches the boolean data type.
 - `DateTime`:
-  Maches the DateTime data type.
+  Matches the DateTime data type.
 
 It's worth noting that because Type is a data type it should be followed by a comma.
 
@@ -133,7 +132,7 @@ A map is a complex type in SKEMA that describes a SKON map, what keys and type o
 
 A map is written as Key-Value pairs where the key represents the expected SKON key and the value is a data type.
 
-The data type is not restricted to [Type](#type) and can contain other Map and [Arrays](#arrays) too.
+The data type is not restricted to [Type](#type) and can contain other Maps and [Arrays](#arrays) too.
 
 #### Examples
 
@@ -159,24 +158,25 @@ AnotherKey: Integer,
 
 A definition is used to store and reuse common data structures in multiple places.
 
-To define a data structure you just need to write `def` before a key in a Map.
+To define a data structure you just need to write `define` before a key in a Map.
 
 The definition is not considered a part of the SKEMA and should be stored separate for reference solving when the SKEMA has been parsed.
-This is illustrated in the example below the definition of `MapDef` would not contain a key to `AnotherDef`.
+This is illustrated in the example below: the definition of `MapDef` would not contain a key to `AnotherDef`. 
+Additionally defitions are always in file scope so the `AnotherDef` definition would be usable anywhere in the file.
 
-If there are multiple definitions for the same name the earlier definitions are overwritten.
+If there are multiple definitions for the same name the last definition from top to bottom is used.
 
 Any data type can be defined.
 
 #### Examples
 
-- `def StringDef: String,`
-- `def ArrayDef: [ Integer ],`
+- `define StringDef: String,`
+- `define ArrayDef: [ Integer ],`
 
 ```scala
-def MapDef:
+define MapDef:
 {
-  def AnotherDef: [ Integer ],
+  define AnotherDef: [ Integer ],
   Key: Float,
 },
 ```
@@ -191,7 +191,7 @@ A reference is written as a `#` followed by the name of the defined data structu
 #### Example
 
 ```scala
-def Person:
+define Person:
 {
   FirstName: String,
   LastName: String,
@@ -208,17 +208,12 @@ A parser **should** support definitions and references.
 The references **should** be solved after the whole document has been parsed,
  by first making sure there are no [strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component) in the definition graph and then substituting all references with their matching definition.
 
-Traversing the graph is done by finding a reference string and finding a maching definition. 
-This works because definitios are stored separate from the rest of the SKEMA and decause there are no nested definitions.
-
-When detecting strongly connected components `optional` elements should not be traversed.
-
 If there are any strongly connected components the SKEMA has recursing definitions and cannot be resolved!
 
-This way of resolving references allows for semi-recursive SKEMAs to be constructed like the following:
+When defining a strongly connected component `optional` elements should not be considered edges, this allows for semi-reqursive SKEMAs to be written like this:
 
 ```scala
-def Node: 
+define Node: 
 {
   Value: Any,
   optional Nodes: [ #Node ],
