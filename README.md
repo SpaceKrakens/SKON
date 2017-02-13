@@ -9,6 +9,13 @@ It's also notable that it has a schema language, SKEMA! So you don't have to jus
 
 You can find the SKON Spec [here](./Spec/SKON%20v1%20Spec.md) and the SKEMA Spec [here](./Spec/SKEMA%20v1%20Spec.md).
 
+## Table of contents
+
+- [Example](#example)
+- [SKEMA](#skema)
+- [Types](#types)
+- [Projects](#projects)
+
 ## Example
 
 The following is an example showing the syntax of the language:
@@ -59,7 +66,7 @@ The schema language for SKON is called SKEMA. The following is an example of a S
 def Color:
 {
     Name: string,
-    Color: int,
+    Color: int,Lan
 },
 
 // Defines that an array called Colors needs to exits
@@ -201,3 +208,7 @@ DateTimes:
     @13:37:01.002+09:00,
 ],
 ```
+
+### Projects
+
+- [SKON.NET](https://github.com/SpaceKrakens/SKON.NET) - .NET parser and api
