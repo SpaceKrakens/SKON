@@ -66,7 +66,7 @@ The schema language for SKON is called SKEMA. The following is an example of a S
 def Color:
 {
     Name: string,
-    Color: int,Lan
+    Color: int,
 },
 
 // Defines that an array called Colors needs to exits
