@@ -20,7 +20,6 @@ It's focus should be narrow; creating a concise and easy data storage language t
 - [Syntax](#syntax)
   - [Comments](#comments)
   - [Metadata](#metadata)
-  - [Null](#null)
   - [String](#string-1)
   - [Integer](#integer-1)
   - [Float](#float-1)
@@ -73,16 +72,16 @@ The following is a list of all of the different data types and the some notes re
 
 - #### Integer
 
-  Integer values **should** be 64-bit.
+  Integer values **should** be signed 64-bit.
 
 - #### Float
 
-  Float values **should** be 64-bit floating point.
+  Float values **should** be IEEE 754 double-precision floating-point.
 
 - #### Boolean
 - #### DateTime
 
-  DateTimes **should** be able to represent any date or time and not be limited to only Unix-time.
+  DateTimes **should** be able to represent any date or time supported by the DateTime syntax.
   
   DateTimes that only specify time of day **should** assume "today" as the date.
   
@@ -133,7 +132,8 @@ Multi-line example.
 ---
 
 Metadata in SKON provide the parser and user with various information about the document.
-All metadata should be at the top of a SKON file.
+
+All metadata **needs** to be at the top of a SKON file.
 
 Metadata entries are surrounded by `~` chracters on both sides and contain a key-value pair.
 
@@ -141,9 +141,9 @@ There are two metadata directives a parser **needs** to support.
 These are as follows:
 
 - `Version` which is followed by an integer. This is the SKON language version.
-- `DocumentVersion` which is followed by any datatype. This is used in applictaion to filter versions of a file.
+- `DocumentVersion` which is followed by a string. This is used in applictaion to filter versions of a file.
 
-A `Version` metadata directive is required at the top of every file.
+A `Version` and `DocumentVersion` metadata directive is required at the top of every file.
 
 If the parser supports SKEMA it **should** support the `SKEMA` directive which is followed by a string that locates the SKEMA file.
 
@@ -160,20 +160,6 @@ This is an example of a valid metadata header for a SKON file.
 
 // SKON data...
 ```
-
-### Null
----
-
-A null value in SKON is simply written as `null` all lower case. 
-
-#### Example
-
-- `null,`
-
-##### NOT VALID
-
-- `NULL,`
-- `Null,`
 
 ### String
 ---
@@ -194,11 +180,11 @@ The escapable control characters are:
 - `"This is a normal string",`
 - `"This is an escaped string \n \"Quote inside of string\"",`
 
-Unicode escapes are written with a `\u` followed by four hexadecimal numbers.
+As SKON is written in UTF-8 there is no need for special escaping of unicode characters, they are just written as any other character.
 
 #### Example
 
-- `"Unicode character: \u36A0",`
+- `"This is unicode in a string ♥"`
 
 ### Integer
 ---
@@ -235,7 +221,7 @@ They can also we written using scientific notation using either an upper case or
 #### Examples
 
 - `314E-2,`
-- `1.234e1000,`
+- `1.234e100,`
 - `0.1E1,`
 
 ### Boolean
@@ -257,24 +243,16 @@ Booleans in SKON are written as either `true` or `false` in only lower case.
 ### DateTime
 ---
 
-There are numerous ways to write date and time in SKON, most of which are based upon [RFC 3339/ISO 8601](https://tools.ietf.org/html/rfc3339#section-5.6). Additionally to this standard, SKON supports UNIX Timestamps.
+There are numerous ways to write date and time in SKON, all of which are based upon [RFC 3339/ISO 8601](https://tools.ietf.org/html/rfc3339#section-5.6).
 
-All DateTimes are prefixed with an `@` character.
-
-A unix timestamp is written as any signed 64-bit integer.
-
-That means that `@-9223372036854775808,` is the smallest unix timestamp and `@9223372036854775807,` is the biggest possible timestamp.
-
-Other numbers like `@-9223372036854775810,` or `@9223372036854775809,` are not valid!
-
-The other DateTime formats **should** not be limited to Unix time only and can represent any date supported by the syntax.
+The DateTime formats **should** be able to represent any date supported by the syntax.
 
 A DateTime can be represented using the following format `yyyy-MM-dd` where `yyyy` is the year, `MM` is the month and `dd` is the day. Written as integers.
 
 #### Examples
 
-- `@2016-10-09,`
-- `@1136-11-15,`
+- `2016-10-09,`
+- `1136-11-15,`
 
 DateTimes can also be represented as a time of day using the following syntax, `HH:mm:ss` or `HH:mm:ss.sfrac` followed by a UTC time zone offset written as either `Z` for no offset or `+/-HH:mm` for the appropriate UTC offset.
 
@@ -284,18 +262,18 @@ A parser **should** be able to parse any number of `sfrac` digits, though it is 
 
 #### Examples
 
-- `@12:00:00Z,`
-- `@16:30:20.345-03:30,`
-- `@12:34:56.789Z,`
-- `@00:00:00.000+10:15,`
+- `12:00:00Z,`
+- `16:30:20.345-03:30,`
+- `12:34:56.789Z,`
+- `00:00:00.000+10:15,`
 
 Date and Time can be written together written as any date and any time separated with a `T`.
 
 #### Examples
 
-- `@2310-12-01T13:37:01.002+09:00,`
-- `@2310-12-01T13:37:01.02Z,`
-- `@2310-12-01T13:37:01Z,`
+- `2310-12-01T13:37:01.002+09:00,`
+- `2310-12-01T13:37:01.02Z,`
+- `2310-12-01T13:37:01Z,`
 
 ### Array
 ---
@@ -313,13 +291,15 @@ Arrays are written as a list of values all followed by a comma surrounded by two
 
 Maps are a written as a collection of key-value pairs, all followed by a comma and surrounded by two `{` `}` braces.
 
-Keys are written as any letter `A-Za-z_` followed by any number of the following characters `A-Za-z0-9_` ending with a `:`.
+Keys are written as any characters exluding `{`, `}`, `[`, `]`, `"`, `.` and `,` ending in a `:`. So UTF-8 character are valid keys.
+Keys must have a length of atleast one character.
 
 #### Examples
 
 - `Key:`
 - `This_Is_A_Key:`
 - `_AnotherKey:`
+- `♥:`
 
 #### The following examples are invalid!
 
@@ -338,8 +318,8 @@ The values can be any data type and are written after the `:` of the key.
   KeyToInt: 1,
   KeyToFloat: 1.2,
   KeyToBool: true,
-  KeyToDateTime: @2016-10-09,
-  KeyToArray: [ "String", 1, 1.2, true, @2016-10-09, ],
+  KeyToDateTime: 2016-10-09,
+  KeyToArray: [ "String", 1, 1.2, true, 2016-10-09, ],
   KeyToMap:
   {
     KeyToString: "String inside nested map",
@@ -361,13 +341,14 @@ Or preferably write every element as a key-value pair without the surrounding ma
 
 ```c
 ~Version: 1~
+~DocumentVersion: ""~
 
 KeyToString: "String value",
 KeyToInt: 1,
 KeyToFloat: 1.2,
 KeyToBool: true,
-KeyToDateTime: @2016-10-09,
-KeyToArray: [ "String", 1, 1.2, true, @2016-10-09, ],
+KeyToDateTime: 2016-10-09,
+KeyToArray: [ "String", 1, 1.2, true, 2016-10-09, ],
 KeyToMap:
 {
   KeyToString: "String inside nested map",

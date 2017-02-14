@@ -56,8 +56,6 @@ Every value **needs** an ending comma and a file **should** be a implicit map.
 
 SKEMA uses the same metadata format as SKON, seen [here](./SKON%20v1%20Spec.md#metadata).
 
-This means that SKEMA requires parsing of both SKEMA objects aswell as SKON data.
-
 All metadata **needs** to be at the top of a SKEMA file.
 
 Metadata entries are surrounded by `~` chracters on both sides and contain a key-value pair.

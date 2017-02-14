@@ -38,7 +38,7 @@ array
 
 // Any simple value, ie terminals
 simple_value
-    : (STRING | DATETIME | INTEGER | FLOAT | TRUE | FALSE | NULL)
+    : (STRING | DATETIME | INTEGER | FLOAT | TRUE | FALSE)
     ;
 
 // Any complex value, ie values containing values
@@ -71,7 +71,6 @@ DATETIME
 // True and false is before to get mached before KEY
 TRUE: 'true';
 FALSE: 'false';
-NULL: 'null';
 
 METADELIMIT
     : '~'
