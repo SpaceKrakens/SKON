@@ -81,7 +81,7 @@ The following is a list of all of the different data types and the some notes re
 - #### Boolean
 - #### DateTime
 
-  DateTimes **should** be able to represent any date or time.
+  DateTimes **should** be able to represent any date or time supported by the DateTime syntax.
   
   DateTimes that only specify time of day **should** assume "today" as the date.
   
@@ -132,7 +132,8 @@ Multi-line example.
 ---
 
 Metadata in SKON provide the parser and user with various information about the document.
-All metadata should be at the top of a SKON file.
+
+All metadata **needs** to be at the top of a SKON file.
 
 Metadata entries are surrounded by `~` chracters on both sides and contain a key-value pair.
 
@@ -140,9 +141,9 @@ There are two metadata directives a parser **needs** to support.
 These are as follows:
 
 - `Version` which is followed by an integer. This is the SKON language version.
-- `DocumentVersion` which is followed by any datatype. This is used in applictaion to filter versions of a file.
+- `DocumentVersion` which is followed by a string. This is used in applictaion to filter versions of a file.
 
-A `Version` metadata directive is required at the top of every file.
+A `Version` and `DocumentVersion` metadata directive is required at the top of every file.
 
 If the parser supports SKEMA it **should** support the `SKEMA` directive which is followed by a string that locates the SKEMA file.
 
@@ -250,8 +251,8 @@ A DateTime can be represented using the following format `yyyy-MM-dd` where `yyy
 
 #### Examples
 
-- `@2016-10-09,`
-- `@1136-11-15,`
+- `2016-10-09,`
+- `1136-11-15,`
 
 DateTimes can also be represented as a time of day using the following syntax, `HH:mm:ss` or `HH:mm:ss.sfrac` followed by a UTC time zone offset written as either `Z` for no offset or `+/-HH:mm` for the appropriate UTC offset.
 
@@ -261,18 +262,18 @@ A parser **should** be able to parse any number of `sfrac` digits, though it is 
 
 #### Examples
 
-- `@12:00:00Z,`
-- `@16:30:20.345-03:30,`
-- `@12:34:56.789Z,`
-- `@00:00:00.000+10:15,`
+- `12:00:00Z,`
+- `16:30:20.345-03:30,`
+- `12:34:56.789Z,`
+- `00:00:00.000+10:15,`
 
 Date and Time can be written together written as any date and any time separated with a `T`.
 
 #### Examples
 
-- `@2310-12-01T13:37:01.002+09:00,`
-- `@2310-12-01T13:37:01.02Z,`
-- `@2310-12-01T13:37:01Z,`
+- `2310-12-01T13:37:01.002+09:00,`
+- `2310-12-01T13:37:01.02Z,`
+- `2310-12-01T13:37:01Z,`
 
 ### Array
 ---
@@ -317,8 +318,8 @@ The values can be any data type and are written after the `:` of the key.
   KeyToInt: 1,
   KeyToFloat: 1.2,
   KeyToBool: true,
-  KeyToDateTime: @2016-10-09,
-  KeyToArray: [ "String", 1, 1.2, true, @2016-10-09, ],
+  KeyToDateTime: 2016-10-09,
+  KeyToArray: [ "String", 1, 1.2, true, 2016-10-09, ],
   KeyToMap:
   {
     KeyToString: "String inside nested map",
@@ -340,13 +341,14 @@ Or preferably write every element as a key-value pair without the surrounding ma
 
 ```c
 ~Version: 1~
+~DocumentVersion: ""~
 
 KeyToString: "String value",
 KeyToInt: 1,
 KeyToFloat: 1.2,
 KeyToBool: true,
-KeyToDateTime: @2016-10-09,
-KeyToArray: [ "String", 1, 1.2, true, @2016-10-09, ],
+KeyToDateTime: 2016-10-09,
+KeyToArray: [ "String", 1, 1.2, true, 2016-10-09, ],
 KeyToMap:
 {
   KeyToString: "String inside nested map",
