@@ -179,11 +179,11 @@ The escapable control characters are:
 - `"This is a normal string",`
 - `"This is an escaped string \n \"Quote inside of string\"",`
 
-Unicode escapes are written with a `\u` followed by four hexadecimal numbers.
+As SKON is written in UTF-8 there is no need for special escaping of unicode characters, they are just written as any other character.
 
 #### Example
 
-- `"Unicode character: \u36A0",`
+- `"This is unicode in a string ♥"`
 
 ### Integer
 ---
