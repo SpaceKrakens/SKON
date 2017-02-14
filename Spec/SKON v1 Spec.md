@@ -20,7 +20,6 @@ It's focus should be narrow; creating a concise and easy data storage language t
 - [Syntax](#syntax)
   - [Comments](#comments)
   - [Metadata](#metadata)
-  - [Null](#null)
   - [String](#string-1)
   - [Integer](#integer-1)
   - [Float](#float-1)
@@ -73,16 +72,16 @@ The following is a list of all of the different data types and the some notes re
 
 - #### Integer
 
-  Integer values **should** be 64-bit.
+  Integer values **should** be signed 64-bit.
 
 - #### Float
 
-  Float values **should** be 64-bit floating point.
+  Float values **should** be IEEE 754 double-precision floating-point.
 
 - #### Boolean
 - #### DateTime
 
-  DateTimes **should** be able to represent any date or time and not be limited to only Unix-time.
+  DateTimes **should** be able to represent any date or time.
   
   DateTimes that only specify time of day **should** assume "today" as the date.
   
@@ -161,20 +160,6 @@ This is an example of a valid metadata header for a SKON file.
 // SKON data...
 ```
 
-### Null
----
-
-A null value in SKON is simply written as `null` all lower case. 
-
-#### Example
-
-- `null,`
-
-##### NOT VALID
-
-- `NULL,`
-- `Null,`
-
 ### String
 ---
 
@@ -235,7 +220,7 @@ They can also we written using scientific notation using either an upper case or
 #### Examples
 
 - `314E-2,`
-- `1.234e1000,`
+- `1.234e100,`
 - `0.1E1,`
 
 ### Boolean
@@ -257,17 +242,9 @@ Booleans in SKON are written as either `true` or `false` in only lower case.
 ### DateTime
 ---
 
-There are numerous ways to write date and time in SKON, most of which are based upon [RFC 3339/ISO 8601](https://tools.ietf.org/html/rfc3339#section-5.6). Additionally to this standard, SKON supports UNIX Timestamps.
+There are numerous ways to write date and time in SKON, all of which are based upon [RFC 3339/ISO 8601](https://tools.ietf.org/html/rfc3339#section-5.6).
 
-All DateTimes are prefixed with an `@` character.
-
-A unix timestamp is written as any signed 64-bit integer.
-
-That means that `@-9223372036854775808,` is the smallest unix timestamp and `@9223372036854775807,` is the biggest possible timestamp.
-
-Other numbers like `@-9223372036854775810,` or `@9223372036854775809,` are not valid!
-
-The other DateTime formats **should** not be limited to Unix time only and can represent any date supported by the syntax.
+The DateTime formats **should** be able to represent any date supported by the syntax.
 
 A DateTime can be represented using the following format `yyyy-MM-dd` where `yyyy` is the year, `MM` is the month and `dd` is the day. Written as integers.
 
@@ -313,13 +290,15 @@ Arrays are written as a list of values all followed by a comma surrounded by two
 
 Maps are a written as a collection of key-value pairs, all followed by a comma and surrounded by two `{` `}` braces.
 
-Keys are written as any letter `A-Za-z_` followed by any number of the following characters `A-Za-z0-9_` ending with a `:`.
+Keys are written as any characters exluding `{`, `}`, `[`, `]`, `"`, `.` and `,` ending in a `:`. So UTF-8 character are valid keys.
+Keys must have a length of atleast one character.
 
 #### Examples
 
 - `Key:`
 - `This_Is_A_Key:`
 - `_AnotherKey:`
+- `♥:`
 
 #### The following examples are invalid!
 
